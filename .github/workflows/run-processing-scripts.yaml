@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gh-actions
+      - main
 jobs:
   run-scripts:
     runs-on: ubuntu-latest
