@@ -3,7 +3,6 @@ run-name: ${{ github.actor }} updated points file
 on:
   push:
     branches:
-      - gh-actions
       - main
 jobs:
   run-scripts:
