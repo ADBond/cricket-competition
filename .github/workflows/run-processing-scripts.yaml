@@ -13,4 +13,6 @@ jobs:
         with:
           r-version: '4.2.1'
       - uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
       - run: Rscript matches-to-points.R
