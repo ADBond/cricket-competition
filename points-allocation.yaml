@@ -8,6 +8,7 @@ match-result-points:
   tie_lose: 1
   lose: 0
   no_result: 1
+  yet_to_play: 0
 
 # again, not thought through
 stage-multipliers:
