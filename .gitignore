@@ -2,3 +2,4 @@
 renv/
 *.Rproj
 .Rprofile
+.Rhistory
