@@ -3,3 +3,5 @@ renv/
 *.Rproj
 .Rprofile
 .Rhistory
+
+*.csv#
