@@ -11,5 +11,14 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time_utc_p
 10,first_round,OMN,OMN,OCAG 1,B,21/10/21,1800
 11,first_round,IRE,NAM,Sheikh Zayed Stadium,A,22/10/21,1400
 12,first_round,LKA,NED,Sheikh Zayed Stadium,A,22/10/21,1800
-13,super_12,,,,,,
-14,super_12,,,,,,
+13,super_12,AUS,RSA,Sheikh Zayed Stadium,1,23/10/21,1400
+14,super_12,ENG,WIN,Dubai,1,23/10/21,1800
+15,super_12,LKA,BAN,Sharjah,1,24/10/21,1400
+16,super_12,PAK,IND,Dubai,2,24/10/21,1800
+17,super_12,AFG,AFG,Sharjah,2,25/10/21,1400
+18,super_12,RSA,WIN,Dubai,1,26/10/21,1400
+19,super_12,PAK,NZL,Sharjah,2,26/10/21,1800
+20,super_12,BAN,ENG,Sheikh Zayed Stadium,1,27/10/21,1400
+21,super_12,NAM,SCO,Sheikh Zayed Stadium,2,27/10/21,1800
+22,super_12,AUS,LKA,Dubai,1,28/10/21,1800
+23,super_12,,,,,,

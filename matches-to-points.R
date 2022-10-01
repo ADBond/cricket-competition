@@ -30,10 +30,16 @@ team_shares <- df_participant_shares %>%
 
 shares_lookup <- table_to_lookup(team_shares)
 
+# TODO:
+# can catch some input errors by checking toss/batting details match with something from scores
+# can also check that scores are consistent with result
+# also compute group tables as a cross-check
+
 print("combine and process...")
 df <- df_matches %>%
   right_join(df_match_teams, by="match_number") %>%
-  mutate(result = tidyr::replace_na(result, "yet_to_play")) %>%
+  # mutate(result = tidyr::replace_na(result, "yet_to_play")) %>%
+  filter(!is.na(result)) %>%
   mutate(result_points = points_config[["match-result-points"]][result] %>% unlist) %>%
   mutate(multiplier = points_config[["stage-multipliers"]][stage] %>% unlist) %>%
   mutate(team_points = multiplier * result_points)
@@ -41,13 +47,15 @@ df <- df_matches %>%
 df
 
 df %>%
-  filter(result != "yet_to_play") %>%
+  # filter(result != "yet_to_play") %>%
   group_by(team) %>%
   summarise(
+    matches_played = length(team_points),
     total_points = sum(team_points),
     .groups = "drop",
   ) %>%
   mutate(total_shares = shares_lookup[team] %>% unlist()) %>%
-  mutate(points_per_share = ifelse(total_shares != 0, total_points / total_shares, 0))
+  mutate(points_per_share = ifelse(total_shares != 0, total_points / total_shares, 0)) %>%
+  arrange(desc(points_per_share))
 
 print("Done!")
