@@ -2,9 +2,9 @@
 library(glue)
 library(dplyr)
 
-comp_config <- yaml::read_yaml("points-allocation.yaml")
+data_dir <- "./data/mens_t20_world_cup_2022"
 
-data_dir <- "./data"
+comp_config <- yaml::read_yaml(glue("{data_dir}/points-allocation.yaml"))
 
 print("reading data...")
 df_matches <- readr::read_csv(glue("{data_dir}/matches.csv"))
