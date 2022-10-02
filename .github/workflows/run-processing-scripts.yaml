@@ -1,10 +1,10 @@
 name: run-processing-scripts
-run-name: ${{ github.actor }} updated output point files
+run-name: ${{ github.actor }} updated output files
 on:
   push:
     branches:
       - main
-      - actions-commit-output
+
 jobs:
   run-scripts:
     runs-on: ubuntu-latest
