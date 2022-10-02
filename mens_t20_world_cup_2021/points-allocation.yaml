@@ -22,7 +22,7 @@ points:
 
   # just ideas, will need fiddling
   bonus-points:
-    to_super_12s: 1
+    to_super_12: 1
     to_knockouts: 2
     # hat_trick: 0.5
     # century: 0.5

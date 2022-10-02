@@ -7,6 +7,14 @@ table_to_lookup <- function(df, from_to=names(df)[1:2]){
   names(lookup) <- df[[from_to[[1]]]]
   return(lookup)
 }
+replace_null <- function(x, with=NA){
+  x %>%
+    replace(.=="NULL", with)
+}
+self_join <- function(x, ...){
+  x %>%
+    left_join(x, ...)
+}
 
 project_dir <- "./mens_t20_world_cup_2021/"
 data_dir <- glue("{project_dir}/data/")
@@ -20,6 +28,13 @@ df_teams <- readr::read_csv(glue("{data_dir}/teams.csv"))
 df_matches <- readr::read_csv(glue("{data_dir}/matches.csv"))
 df_match_teams <- readr::read_csv(glue("{data_dir}/match_teams.csv"))
 df_participant_shares <- readr::read_csv(glue("{data_dir}/participant_shares.csv"))
+df_bonus_points <- readr::read_csv(glue("{data_dir}/bonus_points.csv")) %>%
+  mutate(
+    bonus_points = points_config[["bonus-points"]][bonus_event] %>%
+      replace_null() %>%
+      unlist() %>%
+      tidyr::replace_na(0)
+  )
 
 team_shares <- df_participant_shares %>%
   group_by(team_code) %>%
@@ -49,16 +64,27 @@ df <- df_matches %>%
 
 df
 
-df_team_points <- df %>%
+# where are points from
+# ~~TODO: need to do self-join like below for opponent~~
+df_full_points <- df %>%
+  select(match_number, team, result, team_points, stage) %>%
+  self_join(by="match_number", suffix=c("_main", "_opponent")) %>%
+  filter(team_main != team_opponent) %>%
+  mutate(event = glue("{result_main}_{team_opponent}_{stage_main}")) %>%
+  rename(team = team_main, points = team_points_main) %>%
+  select(team, points, event) %>%
+  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event))
+
+df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
   group_by(team) %>%
   summarise(
-    matches_played = length(team_points),
-    total_points = sum(team_points),
+    matches_played = length(points),
+    total_points = sum(points),
     .groups = "drop",
   ) %>%
   mutate(total_shares = shares_lookup[team] %>% unlist()) %>%
-  mutate(points_per_share = ifelse(total_shares != 0, total_points / total_shares, 0)) %>%
+  mutate(points_per_share = if_else(total_shares != 0, total_points / total_shares, 0)) %>%
   arrange(desc(points_per_share))
 
 df_team_points
@@ -90,10 +116,6 @@ raw_balls_to_overs <- function(x){
   return(glue("{full_overs}.{balls}"))
 }
 
-self_join <- function(x, ...){
-  x %>%
-    left_join(x, ...)
-}
 
 df_head_to_head <- df %>%
   select(match_number, stage, group, team, runs, wickets, overs, result) %>%
