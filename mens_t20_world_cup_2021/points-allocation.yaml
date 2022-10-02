@@ -12,6 +12,8 @@ points:
     lose: 0
     no_result: 1
     yet_to_play: 0
+    # and also loss-softening that is calculated automatically
+    close_loss: 0.2
 
   # again, not thought through
   stage-multipliers:

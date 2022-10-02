@@ -16,6 +16,24 @@ self_join <- function(x, ...){
   x %>%
     left_join(x, ...)
 }
+# crickety utilities
+overs_to_raw_balls <- function(x){
+  # vectorising hack
+  if(length(x) > 1){
+    return(sapply(x, overs_to_raw_balls))
+  }
+  over_details <- if_else(stringr::str_detect(x, "\\."), glue("{x}"), glue("{x}.0")) %>%
+    stringr::str_split("\\.") %>%
+    purrr::pluck(1) %>%
+    as.numeric()
+  return(6*over_details[[1]] + over_details[[2]])
+}
+raw_balls_to_overs <- function(x){
+  full_overs <- floor(x/6)
+  balls <- x %% 6
+  return(glue("{full_overs}.{balls}"))
+}
+
 
 project_dir <- "./mens_t20_world_cup_2021/"
 data_dir <- glue("{project_dir}/data/")
@@ -63,13 +81,35 @@ df <- df_matches %>%
 
 df
 
-# where are points from
-# ~~TODO: need to do self-join like below for opponent~~
-df_full_points <- df %>%
-  select(match_number, team, result, team_points, stage) %>%
-  self_join(by="match_number", suffix=c("_main", "_opponent")) %>%
+# table showing opponent information by match
+df_head_to_head <- df %>%
+  select(match_number, stage, group, team, runs, wickets, overs, result, team_points) %>%
+  self_join(team, by=c("match_number", "stage", "group"), suffix=c("_main", "_opponent")) %>%
   filter(team_main != team_opponent) %>%
-  mutate(event = glue("{result_main}_{team_opponent}_{stage_main}")) %>%
+  mutate(
+    overs_faced_eff = overs_to_raw_balls(
+      if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+    ) %>% raw_balls_to_overs()
+  ) %>%
+  mutate(
+    overs_bowled_eff = overs_to_raw_balls(
+      if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+    ) %>% raw_balls_to_overs()
+  ) %>%
+  mutate(
+    nrr = runs_main/(overs_to_raw_balls(overs_faced_eff)/6) - runs_opponent/(overs_to_raw_balls(overs_bowled_eff)/6)
+  ) %>%
+  # TODO: probably should be categories rather than bool
+  mutate(close_loss = (result_main == "lose") & nrr > -1)
+
+# where are points from?
+df_full_points <- df_head_to_head %>%
+  filter(team_main != team_opponent) %>%
+  # TODO: need to get these into main logic
+  mutate(result_main = if_else(close_loss, "close_loss", result_main)) %>%
+  mutate(team_points_main = if_else(close_loss, 0.2, as.double(team_points_main))) %>%
+  #
+  mutate(event = glue("{result_main}_{team_opponent}_{stage}")) %>%
   rename(team = team_main, points = team_points_main) %>%
   select(team, points, event) %>%
   bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event))
@@ -98,28 +138,6 @@ df_participant_scores <- df_participant_points_by_share %>%
   ) %>%
   arrange(desc(total_points))
 
-overs_to_raw_balls <- function(x){
-  # vectorising hack
-  if(length(x) > 1){
-    return(sapply(x, overs_to_raw_balls))
-  }
-  over_details <- if_else(stringr::str_detect(x, "\\."), glue("{x}"), glue("{x}.0")) %>%
-    stringr::str_split("\\.") %>%
-    purrr::pluck(1) %>%
-    as.numeric()
-  return(6*over_details[[1]] + over_details[[2]])
-}
-raw_balls_to_overs <- function(x){
-  full_overs <- floor(x/6)
-  balls <- x %% 6
-  return(glue("{full_overs}.{balls}"))
-}
-
-
-df_head_to_head <- df %>%
-  select(match_number, stage, group, team, runs, wickets, overs, result) %>%
-  self_join(team, by=c("match_number", "stage", "group"), suffix=c("_main", "_opponent")) %>%
-  filter(team_main != team_opponent)
 
 # group tables
 df_group_tables <- df_head_to_head %>%
