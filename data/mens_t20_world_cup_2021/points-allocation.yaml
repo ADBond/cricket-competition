@@ -18,7 +18,7 @@ points:
     first_round: 1
     super_12: 2
     semi_finals: 8
-    finals: 16
+    final: 16
 
   # just ideas, will need fiddling
   bonus-points:
