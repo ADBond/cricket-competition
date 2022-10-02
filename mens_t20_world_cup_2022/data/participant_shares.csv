@@ -1,4 +1,4 @@
-share_id,participant_id,share
+share_id,participant_id,team_code
 1,1,ENG
 2,1,ENG
 3,1,ENG
@@ -7,4 +7,3 @@ share_id,participant_id,share
 6,1,AUS
 7,1,IRE
 8,1,NED
-

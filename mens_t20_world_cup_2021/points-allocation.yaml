@@ -1,0 +1,34 @@
+# defines how points are allocated to teams in competition
+title: "Points allocation 2021 Men's T20 World Cup"
+
+# settings related to how teams get points
+points:
+  # just rough for something
+  match-result-points:
+    win: 2
+    tie: 1
+    tie_win: 1.9
+    tie_lose: 1.1
+    lose: 0
+    no_result: 1
+    yet_to_play: 0
+
+  # again, not thought through
+  stage-multipliers:
+    first_round: 1
+    super_12: 2
+    semi_finals: 8
+    final: 16
+
+  # just ideas, will need fiddling
+  bonus-points:
+    to_super_12: 1
+    to_knockouts: 2
+    # hat_trick: 0.5
+    # century: 0.5
+
+# settings for valid share selections
+restrictions:
+  max-shares-per-team: 3
+  total-shares: 10
+  min-number-group-stage-teams: 1
