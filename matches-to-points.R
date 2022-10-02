@@ -8,9 +8,10 @@ table_to_lookup <- function(df, from_to=names(df)[1:2]){
   return(lookup)
 }
 
-data_dir <- "./data/mens_t20_world_cup_2021"
+project_dir <- "./mens_t20_world_cup_2021/"
+data_dir <- glue("{project_dir}/data/")
 
-comp_config <- yaml::read_yaml(glue("{data_dir}/points-allocation.yaml"))
+comp_config <- yaml::read_yaml(glue("{project_dir}/points-allocation.yaml"))
 
 points_config <- comp_config[["points"]]
 
