@@ -1,5 +1,6 @@
 library(glue)
 library(dplyr)
+library(readr)
 
 # basic, no checking
 table_to_lookup <- function(df, from_to=names(df)[1:2]){
@@ -23,12 +24,11 @@ comp_config <- yaml::read_yaml(glue("{project_dir}/points-allocation.yaml"))
 
 points_config <- comp_config[["points"]]
 
-print("reading data...")
-df_teams <- readr::read_csv(glue("{data_dir}/teams.csv"))
-df_matches <- readr::read_csv(glue("{data_dir}/matches.csv"))
-df_match_teams <- readr::read_csv(glue("{data_dir}/match_teams.csv"))
-df_participant_shares <- readr::read_csv(glue("{data_dir}/participant_shares.csv"))
-df_bonus_points <- readr::read_csv(glue("{data_dir}/bonus_points.csv")) %>%
+df_teams <- read_csv(glue("{data_dir}/teams.csv"))
+df_matches <- read_csv(glue("{data_dir}/matches.csv"))
+df_match_teams <- read_csv(glue("{data_dir}/match_teams.csv"))
+df_participant_shares <- read_csv(glue("{data_dir}/participant_shares.csv"))
+df_bonus_points <- read_csv(glue("{data_dir}/bonus_points.csv")) %>%
   mutate(
     bonus_points = points_config[["bonus-points"]][bonus_event] %>%
       replace_null() %>%
@@ -53,7 +53,6 @@ shares_lookup <- table_to_lookup(team_shares)
 # TODO:
 # duckworth-lewis-stern. Maybe only if needs be/low-priority
 
-print("combine and process...")
 df <- df_matches %>%
   right_join(df_match_teams, by="match_number") %>%
   # mutate(result = tidyr::replace_na(result, "yet_to_play")) %>%
@@ -92,7 +91,7 @@ df_team_points
 df_participant_points_by_share <- df_participant_shares %>%
   left_join(df_team_points, by=c("team_code"="team"))
 
-df_participant_points_by_share %>%
+df_participant_scores <- df_participant_points_by_share %>%
   group_by(participant_id) %>%
   summarise(
     total_points = sum(points_per_share),
@@ -155,4 +154,8 @@ df_group_tables <- df_head_to_head %>%
 df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
-print("Done!")
+write_csv(df_participant_points_by_share, glue("./{data_dir}/generated/participant-scores-by-share.csv"))
+write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
+write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
+write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
+
