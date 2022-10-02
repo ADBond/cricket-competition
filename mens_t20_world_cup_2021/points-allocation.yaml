@@ -24,8 +24,9 @@ points:
   bonus-points:
     to_super_12: 1
     to_knockouts: 2
-    # hat_trick: 0.5
-    # century: 0.5
+    hat_trick: 1
+    century: 0.5
+    fifer: 0.5
 
 # settings for valid share selections
 restrictions:
