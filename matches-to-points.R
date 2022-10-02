@@ -35,6 +35,8 @@ shares_lookup <- table_to_lookup(team_shares)
 # can catch some input errors by checking toss/batting details match with something from scores
 # can also check that scores are consistent with result
 # also compute group tables as a cross-check
+# TODO:
+# duckworth-lewis-stern. Maybe only if needs be/low-priority
 
 print("combine and process...")
 df <- df_matches %>%
@@ -101,12 +103,22 @@ df_group_tables <- df_head_to_head %>%
     points = 2*wins + 1*ties + 1*nr,
     runs_scored = sum(runs_main),
     overs_faced = sum(overs_to_raw_balls(overs_main)) %>% raw_balls_to_overs(),
+    overs_faced_eff = sum(
+      overs_to_raw_balls(
+        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+      )
+    ) %>% raw_balls_to_overs(),
     runs_against = sum(runs_opponent),
     overs_bowled = sum(overs_to_raw_balls(overs_opponent)) %>% raw_balls_to_overs(),
-    nrr = runs_scored/overs_to_raw_balls(overs_faced) - runs_against/overs_to_raw_balls(overs_bowled)
+    overs_bowled_eff = sum(
+      overs_to_raw_balls(
+        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+      )
+    ) %>% raw_balls_to_overs(),
+    nrr = runs_scored/(overs_to_raw_balls(overs_faced_eff)/6) - runs_against/(overs_to_raw_balls(overs_bowled_eff)/6)
   ) %>%
   rename(team = team_main) %>%
-  arrange(desc(points), .by_group = TRUE)
+  arrange(desc(points), desc(nrr), .by_group = TRUE)
 
 df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)

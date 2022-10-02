@@ -49,8 +49,8 @@ id,match_number,team,runs,wickets,overs,result
 48,24,PAK,148,5,19,win
 49,25,LKA,142,10,20,lose
 50,25,RSA,146,6,19.5,win
-51,26,AUS,125,10,20,win
-52,26,ENG,126,2,11.4,lose
+51,26,AUS,125,10,20,lose
+52,26,ENG,126,2,11.4,win
 53,27,AFG,160,5,20,win
 54,27,NAM,98,9,20,lose
 55,28,IND,110,7,20,lose
