@@ -61,4 +61,54 @@ df_points <- df %>%
 
 df_points
 
+overs_to_raw_balls <- function(x){
+  # vectorising hack
+  if(length(x) > 1){
+    return(sapply(x, overs_to_raw_balls))
+  }
+  over_details <- if_else(stringr::str_detect(x, "\\."), glue("{x}"), glue("{x}.0")) %>%
+    stringr::str_split("\\.") %>%
+    purrr::pluck(1) %>%
+    as.numeric()
+  return(6*over_details[[1]] + over_details[[2]])
+}
+raw_balls_to_overs <- function(x){
+  full_overs <- floor(x/6)
+  balls <- x %% 6
+  return(glue("{full_overs}.{balls}"))
+}
+
+self_join <- function(x, ...){
+  x %>%
+    left_join(x, ...)
+}
+
+df_head_to_head <- df %>%
+  select(match_number, stage, group, team, runs, wickets, overs, result) %>%
+  self_join(team, by=c("match_number", "stage", "group"), suffix=c("_main", "_opponent")) %>%
+  filter(team_main != team_opponent)
+
+# group tables
+df_group_tables <- df_head_to_head %>%
+  filter(!is.na(group)) %>%
+  group_by(stage, group, team_main) %>%
+  summarise(
+    matches = length(result_main),
+    wins = sum(result_main == "win"),
+    losses = sum(result_main == "lose"),
+    ties = sum(result_main == "tie"),
+    nr = sum(result_main == "no_result"),
+    points = 2*wins + 1*ties + 1*nr,
+    runs_scored = sum(runs_main),
+    overs_faced = sum(overs_to_raw_balls(overs_main)) %>% raw_balls_to_overs(),
+    runs_against = sum(runs_opponent),
+    overs_bowled = sum(overs_to_raw_balls(overs_opponent)) %>% raw_balls_to_overs(),
+    nrr = runs_scored/overs_to_raw_balls(overs_faced) - runs_against/overs_to_raw_balls(overs_bowled)
+  ) %>%
+  rename(team = team_main) %>%
+  arrange(desc(points), .by_group = TRUE)
+
+df_group_tables %>%
+  select(stage, group, team, matches, wins, losses, nr, points, nrr)
+
 print("Done!")
