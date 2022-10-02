@@ -46,7 +46,7 @@ df <- df_matches %>%
 
 df
 
-df %>%
+df_points <- df %>%
   # filter(result != "yet_to_play") %>%
   group_by(team) %>%
   summarise(
@@ -57,5 +57,7 @@ df %>%
   mutate(total_shares = shares_lookup[team] %>% unlist()) %>%
   mutate(points_per_share = ifelse(total_shares != 0, total_points / total_shares, 0)) %>%
   arrange(desc(points_per_share))
+
+df_points
 
 print("Done!")

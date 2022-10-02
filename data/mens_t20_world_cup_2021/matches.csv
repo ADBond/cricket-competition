@@ -32,12 +32,12 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time_utc_p
 31,super_12,PAK,PAK,Sheikh Zayed Stadium,2,02/11/21,1800
 32,super_12,SCO,NZL,Dubai,2,03/11/21,1400
 33,super_12,AFG,IND,Sheikh Zayed Stadium,2,03/11/21,1800
-34,super_12,AUS,BAN,Dubai,1,04/11/12,1400
-35,super_12,WIN,LKA,Sheikh Zayed Stadium,1,04/11/12,1800
-36,super_12,NAM,NZL,Sharjah,2,05/11/12,1400
-37,super_12,IND,SCO,Dubai,2,05/11/12,1800
-38,super_12,AUS,WIN,Sheikh Zayed Stadium,1,06/11/12,1400
-39,super_12,ENG,RSA,Sharjah,1,06/11/12,1800
+34,super_12,AUS,BAN,Dubai,1,04/11/21,1400
+35,super_12,WIN,LKA,Sheikh Zayed Stadium,1,04/11/21,1800
+36,super_12,NAM,NZL,Sharjah,2,05/11/21,1400
+37,super_12,IND,SCO,Dubai,2,05/11/21,1800
+38,super_12,AUS,WIN,Sheikh Zayed Stadium,1,06/11/21,1400
+39,super_12,ENG,RSA,Sharjah,1,06/11/21,1800
 40,super_12,AFG,AFG,Sheikh Zayed Stadium,2,07/11/21,1400
 41,super_12,PAK,PAK,Sharjah,2,07/11/21,1800
 42,super_12,IND,NAM,Dubai,2,08/11/21,1800
