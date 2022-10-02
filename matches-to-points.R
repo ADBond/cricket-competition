@@ -34,7 +34,7 @@ shares_lookup <- table_to_lookup(team_shares)
 # TODO:
 # can catch some input errors by checking toss/batting details match with something from scores
 # can also check that scores are consistent with result
-# also compute group tables as a cross-check
+# ~~also compute group tables as a cross-check~~
 # TODO:
 # duckworth-lewis-stern. Maybe only if needs be/low-priority
 
@@ -49,7 +49,7 @@ df <- df_matches %>%
 
 df
 
-df_points <- df %>%
+df_team_points <- df %>%
   # filter(result != "yet_to_play") %>%
   group_by(team) %>%
   summarise(
@@ -61,7 +61,17 @@ df_points <- df %>%
   mutate(points_per_share = ifelse(total_shares != 0, total_points / total_shares, 0)) %>%
   arrange(desc(points_per_share))
 
-df_points
+df_team_points
+
+df_participant_points_by_share <- df_participant_shares %>%
+  left_join(df_team_points, by=c("team_code"="team"))
+
+df_participant_points_by_share %>%
+  group_by(participant_id) %>%
+  summarise(
+    total_points = sum(points_per_share),
+  ) %>%
+  arrange(desc(total_points))
 
 overs_to_raw_balls <- function(x){
   # vectorising hack
