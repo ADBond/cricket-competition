@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  WRITE: true
+
 jobs:
   run-scripts:
     runs-on: ubuntu-latest

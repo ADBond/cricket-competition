@@ -16,6 +16,24 @@ self_join <- function(x, ...){
   x %>%
     left_join(x, ...)
 }
+# crickety utilities
+overs_to_raw_balls <- function(x){
+  # vectorising hack
+  if(length(x) > 1){
+    return(sapply(x, overs_to_raw_balls))
+  }
+  over_details <- if_else(stringr::str_detect(x, "\\."), glue("{x}"), glue("{x}.0")) %>%
+    stringr::str_split("\\.") %>%
+    purrr::pluck(1) %>%
+    as.numeric()
+  return(6*over_details[[1]] + over_details[[2]])
+}
+raw_balls_to_overs <- function(x){
+  full_overs <- floor(x/6)
+  balls <- x %% 6
+  return(glue("{full_overs}.{balls}"))
+}
+
 
 project_dir <- "./mens_t20_world_cup_2021/"
 data_dir <- glue("{project_dir}/data/")
@@ -63,16 +81,46 @@ df <- df_matches %>%
 
 df
 
-# where are points from
-# ~~TODO: need to do self-join like below for opponent~~
-df_full_points <- df %>%
-  select(match_number, team, result, team_points, stage) %>%
-  self_join(by="match_number", suffix=c("_main", "_opponent")) %>%
+# table showing opponent information by match
+df_head_to_head <- df %>%
+  select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points) %>%
+  self_join(team, by=c("match_number", "stage", "group", "multiplier"), suffix=c("_main", "_opponent")) %>%
   filter(team_main != team_opponent) %>%
-  mutate(event = glue("{result_main}_{team_opponent}_{stage_main}")) %>%
+  mutate(
+    overs_faced_eff = overs_to_raw_balls(
+      if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+    ) %>% raw_balls_to_overs()
+  ) %>%
+  mutate(
+    overs_bowled_eff = overs_to_raw_balls(
+      if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+    ) %>% raw_balls_to_overs()
+  ) %>%
+  mutate(
+    nrr = runs_main/(overs_to_raw_balls(overs_faced_eff)/6) - runs_opponent/(overs_to_raw_balls(overs_bowled_eff)/6)
+  ) %>%
+  # automatic bonuses
+  mutate(bonus_close_loss = (result_main == "lose") & nrr > -1) %>%
+  mutate(bonus_bowled_out_opponent = (wickets_opponent == 10)) %>%
+  mutate(bonus_no_wickets_lost = (wickets_main == 0))
+
+df_auto_bonus <- df_head_to_head %>%
+  select(stage, multiplier, team_main, starts_with("bonus")) %>%
+  tidyr::pivot_longer(starts_with("bonus"), names_to="bonus", values_to="status") %>%
+  mutate(event = stringr::str_replace(bonus, "bonus_", "")) %>%
+  filter(status) %>%
+  mutate(raw_points = points_config[["match-result-bonuses"]][event] %>% unlist()) %>%
+  #mutate(points = raw_points * multiplier)
+  mutate(points = raw_points * 1)
+
+# where are points from?
+df_full_points <- df_head_to_head %>%
+  filter(team_main != team_opponent) %>%
+  mutate(event = glue("{result_main}_{team_opponent}_{stage}")) %>%
   rename(team = team_main, points = team_points_main) %>%
   select(team, points, event) %>%
-  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event))
+  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event)) %>%
+  bind_rows(df_auto_bonus %>% rename(team = team_main) %>% select(team, points, event))
 
 df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
@@ -98,28 +146,6 @@ df_participant_scores <- df_participant_points_by_share %>%
   ) %>%
   arrange(desc(total_points))
 
-overs_to_raw_balls <- function(x){
-  # vectorising hack
-  if(length(x) > 1){
-    return(sapply(x, overs_to_raw_balls))
-  }
-  over_details <- if_else(stringr::str_detect(x, "\\."), glue("{x}"), glue("{x}.0")) %>%
-    stringr::str_split("\\.") %>%
-    purrr::pluck(1) %>%
-    as.numeric()
-  return(6*over_details[[1]] + over_details[[2]])
-}
-raw_balls_to_overs <- function(x){
-  full_overs <- floor(x/6)
-  balls <- x %% 6
-  return(glue("{full_overs}.{balls}"))
-}
-
-
-df_head_to_head <- df %>%
-  select(match_number, stage, group, team, runs, wickets, overs, result) %>%
-  self_join(team, by=c("match_number", "stage", "group"), suffix=c("_main", "_opponent")) %>%
-  filter(team_main != team_opponent)
 
 # group tables
 df_group_tables <- df_head_to_head %>%
@@ -154,8 +180,10 @@ df_group_tables <- df_head_to_head %>%
 df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
-write_csv(df_participant_points_by_share, glue("./{data_dir}/generated/participant-scores-by-share.csv"))
-write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
-write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
-write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
+if(Sys.getenv("WRITE") != ""){
+  write_csv(df_participant_points_by_share, glue("./{data_dir}/generated/participant-scores-by-share.csv"))
+  write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
+  write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
+  write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
+}
 
