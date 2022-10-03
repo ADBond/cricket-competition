@@ -21,7 +21,10 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
-      - run: Rscript matches-to-points.R
+      - name: Validate data
+        run: Rscript validate.R
+      - name: Generate data files
+        run: Rscript matches-to-points.R
       - name: commit generated files
         run: |
           git config --local user.name "ADBond"
