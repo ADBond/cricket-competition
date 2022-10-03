@@ -3,7 +3,7 @@ title: "Points allocation 2021 Men's T20 World Cup"
 
 # settings related to how teams get points
 points:
-  # just rough for something
+  # points per result, base value
   match-result-points:
     win: 2
     tie: 1
@@ -12,17 +12,22 @@ points:
     lose: 0
     no_result: 1
     yet_to_play: 0
-    # and also loss-softening that is calculated automatically
-    close_loss: 0.2
 
-  # again, not thought through
+  # automatically computed bonuses
+  # these don't get stage-multiplied
+  match-result-bonuses:
+    close_loss: 0.2
+    bowled_out_opponent: 0.3
+    no_wickets_lost: 0.4
+
+  # value multiplying results
   stage-multipliers:
     first_round: 1
     super_12: 2
     semi_finals: 8
     final: 16
 
-  # just ideas, will need fiddling
+  # these are fixed value - don't change throughout tourney
   bonus-points:
     to_super_12: 1
     to_knockouts: 2

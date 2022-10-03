@@ -83,8 +83,8 @@ df
 
 # table showing opponent information by match
 df_head_to_head <- df %>%
-  select(match_number, stage, group, team, runs, wickets, overs, result, team_points) %>%
-  self_join(team, by=c("match_number", "stage", "group"), suffix=c("_main", "_opponent")) %>%
+  select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points) %>%
+  self_join(team, by=c("match_number", "stage", "group", "multiplier"), suffix=c("_main", "_opponent")) %>%
   filter(team_main != team_opponent) %>%
   mutate(
     overs_faced_eff = overs_to_raw_balls(
@@ -99,20 +99,28 @@ df_head_to_head <- df %>%
   mutate(
     nrr = runs_main/(overs_to_raw_balls(overs_faced_eff)/6) - runs_opponent/(overs_to_raw_balls(overs_bowled_eff)/6)
   ) %>%
-  # TODO: probably should be categories rather than bool
-  mutate(close_loss = (result_main == "lose") & nrr > -1)
+  # automatic bonuses
+  mutate(bonus_close_loss = (result_main == "lose") & nrr > -1) %>%
+  mutate(bonus_bowled_out_opponent = (wickets_opponent == 10)) %>%
+  mutate(bonus_no_wickets_lost = (wickets_main == 0))
+
+df_auto_bonus <- df_head_to_head %>%
+  select(stage, multiplier, team_main, starts_with("bonus")) %>%
+  tidyr::pivot_longer(starts_with("bonus"), names_to="bonus", values_to="status") %>%
+  mutate(event = stringr::str_replace(bonus, "bonus_", "")) %>%
+  filter(status) %>%
+  mutate(raw_points = points_config[["match-result-bonuses"]][event] %>% unlist()) %>%
+  #mutate(points = raw_points * multiplier)
+  mutate(points = raw_points * 1)
 
 # where are points from?
 df_full_points <- df_head_to_head %>%
   filter(team_main != team_opponent) %>%
-  # TODO: need to get these into main logic
-  mutate(result_main = if_else(close_loss, "close_loss", result_main)) %>%
-  mutate(team_points_main = if_else(close_loss, 0.2, as.double(team_points_main))) %>%
-  #
   mutate(event = glue("{result_main}_{team_opponent}_{stage}")) %>%
   rename(team = team_main, points = team_points_main) %>%
   select(team, points, event) %>%
-  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event))
+  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event)) %>%
+  bind_rows(df_auto_bonus %>% rename(team = team_main) %>% select(team, points, event))
 
 df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
