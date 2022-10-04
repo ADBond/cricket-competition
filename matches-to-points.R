@@ -34,8 +34,9 @@ raw_balls_to_overs <- function(x){
   return(glue("{full_overs}.{balls}"))
 }
 
+competition <- "mens_t20_world_cup_2021"
 
-project_dir <- "./mens_t20_world_cup_2021/"
+project_dir <- glue("competitions/{competition}/")
 data_dir <- glue("{project_dir}/data/")
 
 comp_config <- yaml::read_yaml(glue("{project_dir}/points-allocation.yaml"))
@@ -186,4 +187,3 @@ if(Sys.getenv("WRITE") != ""){
   write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
   write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
 }
-
