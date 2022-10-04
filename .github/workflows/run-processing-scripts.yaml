@@ -27,8 +27,11 @@ jobs:
         run: Rscript matches-to-points.R
       - name: commit generated files
         run: |
+          LAST_COMMIT_SHA="$(git rev-parse --short=7 HEAD)"
+          # modified from https://stackoverflow.com/questions/25563455/how-do-i-get-last-commit-date-from-git-repository
+          LAST_COMMIT_DATE="$(git log -1 --format="%at" | xargs -I{} date -d @{} +"%d-%m-%Y %H:%M")"
           git config --local user.name "ADBond"
           git config --local user.email "48208438+ADBond@users.noreply.github.com"
           git add mens_t20_world_cup_2021/data/generated
-          git commit -m "Auto-generate outputs" || echo "No changes to commit"
+          git commit -m "Auto-generate outputs (from $LAST_COMMIT_SHA - $LAST_COMMIT_DATE)" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
