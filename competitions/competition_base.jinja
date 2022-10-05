@@ -9,6 +9,7 @@
 </div>
 
 <div id="rules">
+    <div><emph>Teams</emph> get allocated points throughout the competition based upon the following rules:</div>
     <ul>
         {% for rules_description, points in rule_points.items() %}
         <li><span class="rule-name">{{ rules_description }}</span> is worth <span class="point-number">{{ points }}</span> points.</li>
