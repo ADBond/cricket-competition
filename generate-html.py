@@ -14,17 +14,35 @@ def subs_from_yaml(yaml_file):
         config = yaml_load(f.read())
     points_obj = config["points"]
 
+    results = points_obj["match-result-points"]
+    multipliers = points_obj["stage-multipliers"]
     mr_bonuses = points_obj["match-result-bonuses"]
     bonuses = points_obj["bonus-points"]
     return {
-        "Close loss (losing with NRR less than 1 - i.e. less than 20 runs in a match going to 20 overs)": mr_bonuses["close_loss"],
-        "Bowling out opposing team": mr_bonuses["bowled_out_opponent"],
-        "Not conceding any wickets": mr_bonuses["no_wickets_lost"],
-        "Making it from the first round to super 12s": bonuses["to_super_12"],
-        "Making it to the knockout stages": bonuses["to_knockouts"],
-        "Member of team taking a hat-trick": bonuses["hat_trick"],
-        "Member of team making a century": bonuses["century"],
-        "Member of team taking a five-for": bonuses["fifer"],
+        "rule_result_points": {
+            "A win": results["win"],
+            "A tie": results["tie"],
+            "A no-result": results["no_result"],
+            "A win on a tie-break": results["tie_win"],
+            "A loss on a tie-break": results["tie_lose"],
+            "A loss [although see below]": results["lose"],
+        },
+        "rule_multipliers": {
+            "In the first round": multipliers["first_round"],
+            "In the super-12s": multipliers["super_12"],
+            "In the semi-finals": multipliers["semi_finals"],
+            "In the final": multipliers["final"],
+        },
+        "rule_fixed_points": {
+            "Close loss (losing with NRR less than 1 - i.e. less than 20 runs in a match going to 20 overs)": mr_bonuses["close_loss"],
+            "Bowling out opposing team": mr_bonuses["bowled_out_opponent"],
+            "Not conceding any wickets": mr_bonuses["no_wickets_lost"],
+            "Making it from the first round to super 12s": bonuses["to_super_12"],
+            "Making it to the knockout stages": bonuses["to_knockouts"],
+            "Member of team taking a hat-trick": bonuses["hat_trick"],
+            "Member of team making a century": bonuses["century"],
+            "Member of team taking a five-for": bonuses["fifer"],
+        }
     }
 
 
@@ -49,11 +67,11 @@ tl_substitutions = {
 comp_substitutions = {
     "mens_t20_world_cup_2021": {
         "title": "Men's T20 World Cup 2021",
-        "rule_points": subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml")),
+        **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml")),
     },
     "mens_t20_world_cup_2022": {
         "title": "Men's T20 World Cup 2022",
-        "rule_points": {"turning up": 1},
+        **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml"))
     },
 }
 
@@ -72,10 +90,7 @@ for file, subs in tl_substitutions.items():
         f.write(template.render(**subs))
 
 for comp, subs in comp_substitutions.items():
-    # file = os.path.join(TEMPLATE_DIR, comp, f"{comp}.jinja")
-    # file = f"{comp}.jinja"
     template = env.get_template("competition_base.jinja")
-    # file = jinja_file_regex.sub(".html", file)
     file = f"{comp}.html"
     new_full_file = os.path.join(SITE_DIR, file)
     with open(new_full_file, "w+", encoding="utf8") as f:

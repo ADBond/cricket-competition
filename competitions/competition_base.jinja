@@ -9,10 +9,28 @@
 </div>
 
 <div id="rules">
-    <div><emph>Teams</emph> get allocated points throughout the competition based upon the following rules:</div>
+    <div>
+        <emph>Teams</emph> get allocated points throughout the competition based upon the following rules.
+    </div>
+    <div>Match results get scaled depending on the stage of the competition - the base points are</div>
     <ul>
-        {% for rules_description, points in rule_points.items() %}
-        <li><span class="rule-name">{{ rules_description }}</span> is worth <span class="point-number">{{ points }}</span> points.</li>
+        {% for rules_description, points in rule_result_points.items() %}
+        <li><span class="rule-name">{{ rules_description }}</span> is worth <span class="point-number">{{ points
+                }}</span> points.</li>
+        {% endfor %}
+    </ul>
+    <div>with these number being multiplied by the following amounts, depending on the stage of competition.</div>
+    <ul>
+        {% for rules_description, points in rule_multipliers.items() %}
+        <li><span class="rule-name">{{ rules_description }}</span> result points are multiplied by <span class="point-number">{{
+                points }}</span>.</li>
+        {% endfor %}
+    </ul>
+    <div>Additionally, the following set of points remain fixed in value throughout the tournament:</div>
+    <ul>
+        {% for rules_description, points in rule_fixed_points.items() %}
+        <li><span class="rule-name">{{ rules_description }}</span> is worth <span class="point-number">{{ points
+                }}</span> points.</li>
         {% endfor %}
     </ul>
 </div>
