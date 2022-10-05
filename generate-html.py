@@ -24,10 +24,14 @@ comp_substitutions = {
     },
 }
 
+STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
 SITE_DIR = "competitions-site"
 if not os.path.exists(SITE_DIR):
     os.makedirs(SITE_DIR)
+new_static_folder = os.path.join(SITE_DIR, "static")
+if not os.path.exists(new_static_folder):
+    os.makedirs(new_static_folder)
 
 jinja_file_regex = re.compile(r'\.jinja$')
 
@@ -52,6 +56,9 @@ for comp, subs in comp_substitutions.items():
     new_full_file = os.path.join(SITE_DIR, file)
     with open(new_full_file, "w+", encoding="utf8") as f:
         f.write(template.render(**subs))
+
+for file in os.listdir(STATIC_FOLDER):
+    copy(os.path.join(STATIC_FOLDER, file), os.path.join(new_static_folder, file))
 
 # base_templates = ["base.jinja"]
 #

@@ -1,0 +1,11 @@
+body {
+    background-color: gray;
+}
+
+.rule-name {
+    font-weight: bold
+}
+
+.point-number {
+    font-style: italic;
+}
