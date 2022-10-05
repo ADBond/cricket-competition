@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html>
+{% extends "base.jinja" %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
 
-<head>
-    <title>Competition home page</title>
-</head>
-
-<body>
-    Content here
-</body>
-
-</html>
+<div id="competitions">
+    <ul>
+        {% for folder, competition_name in competitions %}
+        <li><a href="./{{ folder }}/{{ folder }}.html">competition_name</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
