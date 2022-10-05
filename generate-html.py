@@ -11,7 +11,17 @@ tl_substitutions = {
             "mens_t20_world_cup_2021": "Men's T20 World Cup 2021",
             "mens_t20_world_cup_2022": "Men's T20 World Cup 2022",
         },
-    }
+    },
+}
+comp_substitutions = {
+    "mens_t20_world_cup_2021": {
+        "title": "Men's T20 World Cup 2021",
+        "rule_points": {"rule": 1},
+    },
+    "mens_t20_world_cup_2022": {
+        "title": "Men's T20 World Cup 2022",
+        "rule_points": {"turning up": 1},
+    },
 }
 
 TEMPLATE_DIR = "competitions"
@@ -25,6 +35,7 @@ env = Environment(
     loader=PackageLoader(TEMPLATE_DIR, "."),
     autoescape=select_autoescape()
 )
+
 for file, subs in tl_substitutions.items():
     template = env.get_template(file)
     file = jinja_file_regex.sub(".html", file)
@@ -32,6 +43,15 @@ for file, subs in tl_substitutions.items():
     with open(new_full_file, "w+", encoding="utf8") as f:
         f.write(template.render(**subs))
 
+for comp, subs in comp_substitutions.items():
+    # file = os.path.join(TEMPLATE_DIR, comp, f"{comp}.jinja")
+    # file = f"{comp}.jinja"
+    template = env.get_template("competition_base.jinja")
+    # file = jinja_file_regex.sub(".html", file)
+    file = f"{comp}.html"
+    new_full_file = os.path.join(SITE_DIR, file)
+    with open(new_full_file, "w+", encoding="utf8") as f:
+        f.write(template.render(**subs))
 
 # base_templates = ["base.jinja"]
 #

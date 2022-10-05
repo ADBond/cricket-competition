@@ -1,0 +1,18 @@
+{% extends "base.jinja" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<div id="description">
+</div>
+
+<div id="rules">
+    <ul>
+        {% for rules_description, points in rule_points.items() %}
+        <li><span class="rule-name">{{ rules_description }}</span> is worth <span class="point-number">{{ points }}</span> points.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
