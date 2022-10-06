@@ -112,7 +112,9 @@ for comp, subs in comp_substitutions.items():
         df_team_points = df_points[df_points["team"] == team]
         team_file = os.path.join(SITE_DIR, comp, f"{code}.html")
         with open(team_file, "w+", encoding="utf8") as f:
-            f.write(team_template.render(team_points_table = df_team_points.to_html(index=False)))
+            f.write(team_template.render(
+                team_points_table = df_team_points.to_html(index=False), title = f"{team} - {subs['title']}"
+            ))
 
 for file in os.listdir(STATIC_FOLDER):
     copy(os.path.join(STATIC_FOLDER, file), os.path.join(new_static_folder, file))
