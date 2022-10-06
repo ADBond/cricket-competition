@@ -7,6 +7,8 @@ from yaml import full_load as yaml_load
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
+import pandas as pd
+
 
 # super hard-code for now
 def subs_from_yaml(yaml_file):
@@ -69,10 +71,10 @@ comp_substitutions = {
         "title": "Men's T20 World Cup 2021",
         **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml")),
     },
-    "mens_t20_world_cup_2022": {
-        "title": "Men's T20 World Cup 2022",
-        **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml"))
-    },
+    # "mens_t20_world_cup_2022": {
+    #     "title": "Men's T20 World Cup 2022",
+    #     **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml"))
+    # },
 }
 
 jinja_file_regex = re.compile(r'\.jinja$')
@@ -90,11 +92,27 @@ for file, subs in tl_substitutions.items():
         f.write(template.render(**subs))
 
 for comp, subs in comp_substitutions.items():
-    template = env.get_template("competition_base.jinja")
+    comp_template = env.get_template("competition_home.jinja")
     file = f"{comp}.html"
     new_full_file = os.path.join(SITE_DIR, file)
+
+    df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv"))
+    teams = dict(zip(df_teams["code"], df_teams["display_name"]))
+    # print(teams)
+
     with open(new_full_file, "w+", encoding="utf8") as f:
-        f.write(template.render(**subs))
+        f.write(comp_template.render(comp=comp, teams=teams, **subs))
+
+    comp_folder = os.path.join(SITE_DIR, comp)
+    if not os.path.exists(comp_folder):
+        os.makedirs(comp_folder)
+    team_template = env.get_template("team_page.jinja")
+    df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
+    for code, team in teams.items():
+        df_team_points = df_points[df_points["team"] == team]
+        team_file = os.path.join(SITE_DIR, comp, f"{code}.html")
+        with open(team_file, "w+", encoding="utf8") as f:
+            f.write(team_template.render(team_points_table = df_team_points.to_html(index=False)))
 
 for file in os.listdir(STATIC_FOLDER):
     copy(os.path.join(STATIC_FOLDER, file), os.path.join(new_static_folder, file))

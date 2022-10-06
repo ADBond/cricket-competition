@@ -8,6 +8,14 @@
 <div id="description">
 </div>
 
+<div id="teams">
+    <ul>
+    {% for code, team in teams.items() %}
+        <li><a href="./{{ comp }}/{{ code }}.html">{{ team }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
 <div id="rules">
     <div>
         <emph>Teams</emph> get allocated points throughout the competition based upon the following rules.

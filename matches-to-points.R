@@ -193,5 +193,8 @@ if(Sys.getenv("WRITE") != ""){
   write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
   write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
   write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
-  write_csv(df_full_points, glue("./{data_dir}/generated/team-points-breakdown.csv"))
+  df_full_points %>%
+    select(display_name, event, points) %>%
+    rename(team = display_name) %>%
+    write_csv(glue("./{data_dir}/generated/team-points-breakdown.csv"))
 }
