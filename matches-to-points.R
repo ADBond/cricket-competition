@@ -53,7 +53,8 @@ df_bonus_points <- read_csv(glue("{data_dir}/bonus_points.csv")) %>%
       replace_null() %>%
       unlist() %>%
       tidyr::replace_na(0)
-  )
+  ) %>%
+  mutate(richer_event = if_else(is.na(details), glue("{bonus_event}"), glue("{bonus_event} ({details})")))
 
 team_shares <- df_participant_shares %>%
   group_by(team_code) %>%
@@ -64,6 +65,7 @@ team_shares <- df_participant_shares %>%
   mutate(total_shares = tidyr::replace_na(total_shares, 0))
 
 shares_lookup <- table_to_lookup(team_shares)
+team_lookup <- table_to_lookup(df_teams, from_to = c("code", "display_name"))
 
 # TODO:
 # can catch some input errors by checking toss/batting details match with something from scores
@@ -106,26 +108,31 @@ df_head_to_head <- df %>%
   mutate(bonus_no_wickets_lost = (wickets_main == 0))
 
 df_auto_bonus <- df_head_to_head %>%
-  select(stage, multiplier, team_main, starts_with("bonus")) %>%
+  select(stage, multiplier, team_main, team_opponent, starts_with("bonus")) %>%
   tidyr::pivot_longer(starts_with("bonus"), names_to="bonus", values_to="status") %>%
-  mutate(event = stringr::str_replace(bonus, "bonus_", "")) %>%
+  mutate(simple_event = stringr::str_replace(bonus, "bonus_", "")) %>%
+  mutate(display_opponent = recode(team_opponent, !!!team_lookup)) %>%
+  mutate(richer_event = glue("{simple_event} (vs {display_opponent}, in {stage})")) %>%
   filter(status) %>%
-  mutate(raw_points = points_config[["match-result-bonuses"]][event] %>% unlist()) %>%
+  mutate(raw_points = points_config[["match-result-bonuses"]][simple_event] %>% unlist()) %>%
   #mutate(points = raw_points * multiplier)
   mutate(points = raw_points * 1)
 
 # where are points from?
 df_full_points <- df_head_to_head %>%
   filter(team_main != team_opponent) %>%
-  mutate(event = glue("{result_main}_{team_opponent}_{stage}")) %>%
+  mutate(display_opponent = recode(team_opponent, !!!team_lookup)) %>%
+  mutate(event = glue("{result_main} in match vs {display_opponent} in {stage}")) %>%
   rename(team = team_main, points = team_points_main) %>%
   select(team, points, event) %>%
-  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = bonus_event) %>% select(team, points, event)) %>%
-  bind_rows(df_auto_bonus %>% rename(team = team_main) %>% select(team, points, event))
+  bind_rows(df_bonus_points %>% rename(points = bonus_points, event = richer_event) %>% select(team, points, event)) %>%
+  bind_rows(df_auto_bonus %>% rename(team = team_main, event = richer_event) %>% select(team, points, event)) %>%
+  left_join(df_teams, by=c("team"="code")) %>%
+  arrange(team)
 
 df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
-  group_by(team) %>%
+  group_by(team, display_name) %>%
   summarise(
     matches_played = length(points),
     total_points = sum(points),
@@ -186,4 +193,5 @@ if(Sys.getenv("WRITE") != ""){
   write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
   write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
   write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
+  write_csv(df_full_points, glue("./{data_dir}/generated/team-points-breakdown.csv"))
 }
