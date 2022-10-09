@@ -97,8 +97,10 @@ for comp, subs in comp_substitutions.items():
     new_full_file = os.path.join(SITE_DIR, file)
 
     df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv"))
+    df_participants = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "participants.csv"))
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     # print(teams)
+    participants = df_participants.to_dict(orient="records")
 
     with open(new_full_file, "w+", encoding="utf8") as f:
         f.write(comp_template.render(comp=comp, teams=teams, **subs))
@@ -114,6 +116,18 @@ for comp, subs in comp_substitutions.items():
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False), title = f"{team} - {subs['title']}"
+            ))
+
+    person_template = env.get_template("person_page.jinja")
+    df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
+    for participant in participants:
+        p_id = participant["id"]
+        p_name = participant["display_name"]
+        df_person_points = df_people_points[df_people_points["participant_id"] == p_id]
+        person_file = os.path.join(SITE_DIR, comp, f"person_{p_id}.html")
+        with open(person_file, "w+", encoding="utf8") as f:
+            f.write(person_template.render(
+                person_points_table = df_person_points.to_html(index=False), title = f"{p_name} - {subs['title']}"
             ))
 
 for file in os.listdir(STATIC_FOLDER):
