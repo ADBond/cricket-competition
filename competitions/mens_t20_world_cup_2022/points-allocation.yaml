@@ -1,23 +1,42 @@
 # defines how points are allocated to teams in competition
-title: "Points allocation"
+title: "Points allocation 2022 Men's T20 World Cup"
 
-# just rough for something
-match-result-points:
-  win: 2
-  tie_win: 1.9
-  tie_lose: 1
-  lose: 0
-  no_result: 1
-  yet_to_play: 0
+# settings related to how teams get points
+points:
+  # points per result, base value
+  match-result-points:
+    win: 2
+    tie: 1
+    tie_win: 1.3
+    tie_lose: 0.7
+    lose: 0
+    no_result: 1
+    yet_to_play: 0
 
-# again, not thought through
-stage-multipliers:
-  first_round: 1
-  super_12: 2
-  semi_finals: 8
-  finals: 16
+  # automatically computed bonuses
+  # these don't get stage-multiplied
+  match-result-bonuses:
+    close_loss: 0.2
+    bowled_out_opponent: 0.3
+    no_wickets_lost: 0.4
 
-# just ideas, will need fiddling
-bonus-points:
-  hat_trick: 0.5
-  century: 0.5
+  # value multiplying results
+  stage-multipliers:
+    first_round: 1
+    super_12: 2
+    semi_finals: 8
+    final: 16
+
+  # these are fixed value - don't change throughout tourney
+  bonus-points:
+    to_super_12: 1
+    to_knockouts: 2
+    hat_trick: 1
+    century: 0.5
+    fifer: 0.5
+
+# settings for valid share selections
+restrictions:
+  max-shares-per-team: 3
+  total-shares: 10
+  min-number-group-stage-teams: 1
