@@ -2,7 +2,7 @@ library(glue)
 library(dplyr)
 library(readr)
 
-competition <- "mens_t20_world_cup_2021"
+competition <- "mens_t20_world_cup_2022"
 
 project_dir <- glue("competitions/{competition}/")
 data_dir <- glue("{project_dir}/data/")

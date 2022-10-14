@@ -71,10 +71,10 @@ comp_substitutions = {
         "title": "Men's T20 World Cup 2021",
         **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml")),
     },
-    # "mens_t20_world_cup_2022": {
-    #     "title": "Men's T20 World Cup 2022",
-    #     **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2021", "points-allocation.yaml"))
-    # },
+    "mens_t20_world_cup_2022": {
+        "title": "Men's T20 World Cup 2022",
+        **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2022", "points-allocation.yaml"))
+    },
 }
 
 jinja_file_regex = re.compile(r'\.jinja$')
