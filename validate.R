@@ -2,7 +2,9 @@ library(glue)
 library(dplyr)
 library(readr)
 
-project_dir <- "./mens_t20_world_cup_2021/"
+competition <- "mens_t20_world_cup_2021"
+
+project_dir <- glue("competitions/{competition}/")
 data_dir <- glue("{project_dir}/data/")
 
 comp_config <- yaml::read_yaml(glue("{project_dir}/points-allocation.yaml"))

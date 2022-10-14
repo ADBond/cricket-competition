@@ -1,0 +1,143 @@
+team,event,points
+Afghanistan,win in match vs Scotland in super_12,4
+Afghanistan,lose in match vs Pakistan in super_12,0
+Afghanistan,win in match vs Namibia in super_12,4
+Afghanistan,lose in match vs India in super_12,0
+Afghanistan,lose in match vs New Zealand in super_12,0
+Afghanistan,fifer (Mujeeb Ur Rahman vs Scotland),0.5
+Afghanistan,"bowled_out_opponent (vs Scotland, in super_12)",0.3
+Afghanistan,"close_loss (vs Pakistan, in super_12)",0.2
+Afghanistan,"close_loss (vs New Zealand, in super_12)",0.2
+Australia,win in match vs South Africa in super_12,4
+Australia,win in match vs Sri Lanka in super_12,4
+Australia,lose in match vs England in super_12,0
+Australia,win in match vs Bangladesh in super_12,4
+Australia,win in match vs West Indies in super_12,4
+Australia,win in match vs Pakistan in semi_finals,16
+Australia,win in match vs New Zealand in final,32
+Australia,to_knockouts,2
+Australia,fifer (Adam Zampa vs Bangladesh),0.5
+Australia,"bowled_out_opponent (vs Bangladesh, in super_12)",0.3
+Bangladesh,lose in match vs Scotland in first_round,0
+Bangladesh,win in match vs Oman in first_round,2
+Bangladesh,win in match vs Papua New Guinea in first_round,2
+Bangladesh,lose in match vs Sri Lanka in super_12,0
+Bangladesh,lose in match vs England in super_12,0
+Bangladesh,lose in match vs West Indies in super_12,0
+Bangladesh,lose in match vs South Africa in super_12,0
+Bangladesh,lose in match vs Australia in super_12,0
+Bangladesh,to_super_12,1
+Bangladesh,"close_loss (vs Scotland, in first_round)",0.2
+Bangladesh,"bowled_out_opponent (vs Papua New Guinea, in first_round)",0.3
+Bangladesh,"close_loss (vs Sri Lanka, in super_12)",0.2
+Bangladesh,"close_loss (vs West Indies, in super_12)",0.2
+England,win in match vs West Indies in super_12,4
+England,win in match vs Bangladesh in super_12,4
+England,win in match vs Australia in super_12,4
+England,win in match vs Sri Lanka in super_12,4
+England,lose in match vs South Africa in super_12,0
+England,lose in match vs New Zealand in semi_finals,0
+England,to_knockouts,2
+England,century (Jos Buttler vs Sri Lanka),0.5
+England,"bowled_out_opponent (vs West Indies, in super_12)",0.3
+England,"bowled_out_opponent (vs Australia, in super_12)",0.3
+England,"bowled_out_opponent (vs Sri Lanka, in super_12)",0.3
+England,"close_loss (vs South Africa, in super_12)",0.2
+England,"close_loss (vs New Zealand, in semi_finals)",0.2
+India,lose in match vs Pakistan in super_12,0
+India,lose in match vs New Zealand in super_12,0
+India,win in match vs Afghanistan in super_12,4
+India,win in match vs Scotland in super_12,4
+India,win in match vs Namibia in super_12,4
+India,"close_loss (vs Pakistan, in super_12)",0.2
+India,"bowled_out_opponent (vs Scotland, in super_12)",0.3
+Ireland,win in match vs Netherlands in first_round,2
+Ireland,lose in match vs Sri Lanka in first_round,0
+Ireland,lose in match vs Namibia in first_round,0
+Ireland,hattrick (Curtis Campher vs Netherlands),0
+Ireland,hattrick (Curtis Campher vs Netherlands),0
+Ireland,"bowled_out_opponent (vs Netherlands, in first_round)",0.3
+Ireland,"close_loss (vs Namibia, in first_round)",0.2
+Sri Lanka,win in match vs Namibia in first_round,2
+Sri Lanka,win in match vs Ireland in first_round,2
+Sri Lanka,win in match vs Netherlands in first_round,2
+Sri Lanka,win in match vs Bangladesh in super_12,4
+Sri Lanka,lose in match vs Australia in super_12,0
+Sri Lanka,lose in match vs South Africa in super_12,0
+Sri Lanka,lose in match vs England in super_12,0
+Sri Lanka,win in match vs West Indies in super_12,4
+Sri Lanka,to_super_12,1
+Sri Lanka,hattrick (Wanindu Hasaranga vs South Africa),0
+Sri Lanka,"bowled_out_opponent (vs Namibia, in first_round)",0.3
+Sri Lanka,"bowled_out_opponent (vs Ireland, in first_round)",0.3
+Sri Lanka,"bowled_out_opponent (vs Netherlands, in first_round)",0.3
+Sri Lanka,"close_loss (vs South Africa, in super_12)",0.2
+Namibia,lose in match vs Sri Lanka in first_round,0
+Namibia,win in match vs Netherlands in first_round,2
+Namibia,win in match vs Ireland in first_round,2
+Namibia,win in match vs Scotland in super_12,4
+Namibia,lose in match vs Afghanistan in super_12,0
+Namibia,lose in match vs Pakistan in super_12,0
+Namibia,lose in match vs New Zealand in super_12,0
+Namibia,lose in match vs India in super_12,0
+Namibia,to_super_12,1
+Netherlands,lose in match vs Ireland in first_round,0
+Netherlands,lose in match vs Namibia in first_round,0
+Netherlands,lose in match vs Sri Lanka in first_round,0
+Netherlands,"close_loss (vs Namibia, in first_round)",0.2
+New Zealand,lose in match vs Pakistan in super_12,0
+New Zealand,win in match vs India in super_12,4
+New Zealand,win in match vs Scotland in super_12,4
+New Zealand,win in match vs Namibia in super_12,4
+New Zealand,win in match vs Afghanistan in super_12,4
+New Zealand,win in match vs England in semi_finals,16
+New Zealand,lose in match vs Australia in final,0
+New Zealand,to_knockouts,2
+New Zealand,"close_loss (vs Pakistan, in super_12)",0.2
+New Zealand,"close_loss (vs Australia, in final)",0.2
+Oman,win in match vs Papua New Guinea in first_round,2
+Oman,lose in match vs Bangladesh in first_round,0
+Oman,lose in match vs Scotland in first_round,0
+Oman,"no_wickets_lost (vs Papua New Guinea, in first_round)",0.4
+Oman,"bowled_out_opponent (vs Bangladesh, in first_round)",0.3
+Pakistan,win in match vs India in super_12,4
+Pakistan,win in match vs New Zealand in super_12,4
+Pakistan,win in match vs Afghanistan in super_12,4
+Pakistan,win in match vs Namibia in super_12,4
+Pakistan,win in match vs Scotland in super_12,4
+Pakistan,lose in match vs Australia in semi_finals,0
+Pakistan,to_knockouts,2
+Pakistan,"no_wickets_lost (vs India, in super_12)",0.4
+Pakistan,"close_loss (vs Australia, in semi_finals)",0.2
+Papua New Guinea,lose in match vs Oman in first_round,0
+Papua New Guinea,lose in match vs Scotland in first_round,0
+Papua New Guinea,lose in match vs Bangladesh in first_round,0
+Papua New Guinea,"close_loss (vs Scotland, in first_round)",0.2
+South Africa,lose in match vs Australia in super_12,0
+South Africa,win in match vs West Indies in super_12,4
+South Africa,win in match vs Sri Lanka in super_12,4
+South Africa,win in match vs Bangladesh in super_12,4
+South Africa,win in match vs England in super_12,4
+South Africa,hattrick (Kagiso Rabada vs England),0
+South Africa,"close_loss (vs Australia, in super_12)",0.2
+South Africa,"bowled_out_opponent (vs Sri Lanka, in super_12)",0.3
+South Africa,"bowled_out_opponent (vs Bangladesh, in super_12)",0.3
+Scotland,win in match vs Bangladesh in first_round,2
+Scotland,win in match vs Papua New Guinea in first_round,2
+Scotland,win in match vs Oman in first_round,2
+Scotland,lose in match vs Afghanistan in super_12,0
+Scotland,lose in match vs Namibia in super_12,0
+Scotland,lose in match vs New Zealand in super_12,0
+Scotland,lose in match vs India in super_12,0
+Scotland,lose in match vs Pakistan in super_12,0
+Scotland,to_super_12,1
+Scotland,"bowled_out_opponent (vs Papua New Guinea, in first_round)",0.3
+Scotland,"bowled_out_opponent (vs Oman, in first_round)",0.3
+Scotland,"close_loss (vs Namibia, in super_12)",0.2
+Scotland,"close_loss (vs New Zealand, in super_12)",0.2
+West Indies,lose in match vs England in super_12,0
+West Indies,lose in match vs South Africa in super_12,0
+West Indies,win in match vs Bangladesh in super_12,4
+West Indies,lose in match vs Sri Lanka in super_12,0
+West Indies,lose in match vs Australia in super_12,0
+West Indies,"close_loss (vs South Africa, in super_12)",0.2

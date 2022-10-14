@@ -5,3 +5,10 @@ renv/
 .Rhistory
 
 *.csv#
+
+venv/
+
+# built site
+competitions-site/
+
+tmp*
