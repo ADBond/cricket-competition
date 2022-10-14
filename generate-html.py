@@ -98,6 +98,7 @@ for comp, subs in comp_substitutions.items():
 
     df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv"))
     df_participants = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "participants.csv"))
+    # TODO: sort by something, such as alphabet?
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     # print(teams)
     participants = df_participants.to_dict(orient="records")
