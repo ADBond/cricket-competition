@@ -111,3 +111,6 @@ sample_shares <- function(column, verbose=TRUE){
 sample_shares("odds_o_mean")
 sample_shares("probsreal_o_mean")
 sample_shares("oddsagainst_oa_mean")
+
+clipr::write_clip(sample_shares("odds_o_mean"))
+clipr::write_clip(sample_shares("oddsagainst_oa_mean"))
