@@ -114,3 +114,7 @@ sample_shares("oddsagainst_oa_mean")
 
 clipr::write_clip(sample_shares("odds_o_mean"))
 clipr::write_clip(sample_shares("oddsagainst_oa_mean"))
+clipr::write_clip(sample_shares("probsreal_o_mean"))
+
+# TODO: excluding some teams, with limited number, with/out first round
+sample_shares(col, excluding=c("ENG"), 7, require_fr=FALSE)
