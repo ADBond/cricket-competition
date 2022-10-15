@@ -1,17 +1,17 @@
-id,display_name,code
-1,Namibia,NAM
-2,Sri Lanka,LKA
-3,Netherlands,NED
-4,United Arab Emirates,UAE
-5,Scotland,SCO
-6,West Indies,WIN
-7,Ireland,IRE
-8,Zimbabwe,ZIM
-9,Afghanistan,AFG
-10,Australia,AUS
-11,England,ENG
-12,New Zealand,NZL
-13,Bangladesh,BAN
-14,India,IND
-15,Pakistan,PAK
-16,South Africa,RSA
+id,display_name,code,first_round_team
+1,Namibia,NAM,TRUE
+2,Sri Lanka,LKA,TRUE
+3,Netherlands,NED,TRUE
+4,United Arab Emirates,UAE,TRUE
+5,Scotland,SCO,TRUE
+6,West Indies,WIN,TRUE
+7,Ireland,IRE,TRUE
+8,Zimbabwe,ZIM,TRUE
+9,Afghanistan,AFG,FALSE
+10,Australia,AUS,FALSE
+11,England,ENG,FALSE
+12,New Zealand,NZL,FALSE
+13,Bangladesh,BAN,FALSE
+14,India,IND,FALSE
+15,Pakistan,PAK,FALSE
+16,South Africa,RSA,FALSE
