@@ -1,8 +1,8 @@
 id,match_number,team,runs,wickets,overs,result
 1,1,LKA,108,10,19,lose
 2,1,NAM,163,7,20,win
-3,2,UAE,,,,
-4,2,NED,,,,
+3,2,UAE,111,8,20,lose
+4,2,NED,112,7,19.5,win
 5,3,WIN,,,,
 6,3,SCO,,,,
 7,4,ZIM,,,,
