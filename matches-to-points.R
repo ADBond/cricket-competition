@@ -137,6 +137,7 @@ df_auto_bonus <- df_head_to_head %>%
 # where are points from?
 df_full_points <- df_head_to_head %>%
   filter(team_main != team_opponent) %>%
+  filter(result_main != "yet_to_play") %>%
   mutate(display_opponent = recode(team_opponent, !!!team_lookup)) %>%
   mutate(event = glue("{result_main} in match vs {display_opponent} in {stage}")) %>%
   rename(team = team_main, points = team_points_main) %>%
@@ -168,7 +169,7 @@ df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
   group_by(team, display_name) %>%
   summarise(
-    matches_played = length(points),
+    matches_played = length(unique(id)),
     total_points = sum(points),
     .groups = "drop",
   ) %>%

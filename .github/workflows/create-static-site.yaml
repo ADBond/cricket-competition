@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} generated site files
 on:
   push:
     branches:
-      - setup-site
+      - main
 
 jobs:
   generate-files:
