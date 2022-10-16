@@ -34,7 +34,7 @@ raw_balls_to_overs <- function(x){
   return(glue("{full_overs}.{balls}"))
 }
 
-competition <- "mens_t20_world_cup_2021"
+competition <- "mens_t20_world_cup_2022"
 
 project_dir <- glue("competitions/{competition}/")
 data_dir <- glue("{project_dir}/data/")
@@ -52,7 +52,9 @@ df_bonus_points <- read_csv(glue("{data_dir}/bonus_points.csv")) %>%
     bonus_points = points_config[["bonus-points"]][bonus_event] %>%
       replace_null() %>%
       unlist() %>%
-      tidyr::replace_na(0)
+      tidyr::replace_na(0) %>%
+      # replace null again to cater for empty
+      replace_null()
   ) %>%
   mutate(richer_event = if_else(is.na(details), glue("{bonus_event}"), glue("{bonus_event} ({details})")))
 
@@ -66,6 +68,12 @@ team_shares <- df_participant_shares %>%
 
 shares_lookup <- table_to_lookup(team_shares)
 team_lookup <- table_to_lookup(df_teams, from_to = c("code", "display_name"))
+
+df_participant_shares %>%
+  group_by(team_code) %>%
+  summarise(
+    shares = length(share_id),
+  )
 
 # TODO:
 # can catch some input errors by checking toss/batting details match with something from scores
