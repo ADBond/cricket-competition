@@ -138,6 +138,24 @@ df_full_points <- df_head_to_head %>%
   left_join(df_teams, by=c("team"="code")) %>%
   arrange(team)
 
+append_missing_teams <- function(df){
+  df_missing <- df_teams %>%
+    filter(!code %in% df$team)
+  if (nrow(df_missing) == 0){
+    return(df)
+  }
+  return(
+    df %>%
+      bind_rows(
+        df_missing %>%
+          select(display_name, code) %>%
+          rename(team = code) %>%
+          mutate(matches_played = 0) %>%
+          mutate(total_points = 0)
+      )
+  )
+}
+
 df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
   group_by(team, display_name) %>%
@@ -146,6 +164,7 @@ df_team_points <- df_full_points %>%
     total_points = sum(points),
     .groups = "drop",
   ) %>%
+  append_missing_teams() %>%
   mutate(total_shares = shares_lookup[team] %>% unlist()) %>%
   mutate(points_per_share = if_else(total_shares != 0, total_points / total_shares, 0)) %>%
   arrange(desc(points_per_share))
@@ -153,7 +172,8 @@ df_team_points <- df_full_points %>%
 df_team_points
 
 df_participant_points_by_share <- df_participant_shares %>%
-  left_join(df_team_points, by=c("team_code"="team"))
+  left_join(df_team_points, by=c("team_code"="team")) %>%
+  mutate(matches_played = tidyr::replace_na(matches_played, 0))
 
 df_participant_scores <- df_participant_points_by_share %>%
   group_by(participant_id) %>%
