@@ -11,5 +11,36 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 10,first_round,,,Kardinia Park,A,20/10/22,1900
 11,first_round,,,Bellerive Oval,B,21/10/22,1500
 12,first_round,,,Bellerive Oval,B,21/10/22,1900
-13,super_12,,,SCG,1,,
-14,super_12,,,Perth Stadium,1,,
+13,super_12,,,SCG,1,22/10/22,1800
+14,super_12,,,Perth Stadium,1,22/10/22,1900
+15,super_12,,,Bellerive Oval,1,23/10/22,1500
+16,super_12,,,MCG,2,23/10/22,1900
+17,super_12,,,Bellerive Oval,2,24/10/22,1500
+18,super_12,,,Bellerive Oval,2,24/10/22,1900
+19,super_12,,,Perth Stadium,1,25/10/22,1900
+20,super_12,,,MCG,1,26/10/22,1500
+21,super_12,,,MCG,1,26/10/22,1900
+22,super_12,,,SCG,2,27/10/22,1400
+23,super_12,,,SCG,2,27/10/22,1800
+24,super_12,,,Perth Stadium,2,27/10/22,1900
+25,super_12,,,MCG,1,28/10/22,1500
+26,super_12,,,MCG,1,28/10/22,1900
+27,super_12,,,SCG,1,29/10/22,1900
+28,super_12,,,The Gabba,2,30/10/22,1300
+29,super_12,,,Perth Stadium,2,30/10/22,1500
+30,super_12,,,Perth Stadium,2,30/10/22,1900
+31,super_12,,,The Gabba,1,31/10/22,1900
+32,super_12,,,The Gabba,1,01/11/22,1400
+33,super_12,,,The Gabba,1,01/11/22,1800
+34,super_12,,,Adelaide Oval,2,02/11/22,1430
+35,super_12,,,Adelaide Oval,2,02/11/22,1830
+36,super_12,,,SCG,2,03/11/22,1900
+37,super_12,,,Adelaide Oval,1,04/11/22,1430
+38,super_12,,,Adelaide Oval,1,04/11/22,1830
+39,super_12,,,SCG,1,05/11/22,1900
+40,super_12,,,Adelaide Oval,2,06/11/22,1030
+41,super_12,,,Adelaide Oval,2,06/11/22,1430
+42,super_12,,,MCG,2,06/11/22,1900
+43,semi_finals,,,SCG,,09/11/22,1900
+44,semi_finals,,,Adelaide Oval,,10/11/22,1830
+45,final,,,MCG,,13/11/22,1900
