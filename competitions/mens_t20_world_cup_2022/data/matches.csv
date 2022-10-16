@@ -1,15 +1,15 @@
 match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 1,first_round,LKA,NAM,Kardinia Park,A,16/10/22,1500
 2,first_round,UAE,UAE,Kardinia Park,A,16/10/22,1900
-3,first_round,,,Bellerive Oval,B,,
-4,first_round,,,Bellerive Oval,B,,
-5,first_round,,,Kardinia Park,A,,
-6,first_round,,,Kardinia Park,A,,
-7,first_round,,,Bellerive Oval,B,,
-8,first_round,,,Bellerive Oval,B,,
-9,first_round,,,Kardinia Park,A,,
-10,first_round,,,Kardinia Park,A,,
-11,first_round,,,Bellerive Oval,B,,
-12,first_round,,,Bellerive Oval,B,,
+3,first_round,,,Bellerive Oval,B,17/10/22,1500
+4,first_round,,,Bellerive Oval,B,17/10/22,1900
+5,first_round,,,Kardinia Park,A,18/10/22,1500
+6,first_round,,,Kardinia Park,A,18/10/22,1900
+7,first_round,,,Bellerive Oval,B,19/10/22,1500
+8,first_round,,,Bellerive Oval,B,19/10/22,1900
+9,first_round,,,Kardinia Park,A,20/10/22,1500
+10,first_round,,,Kardinia Park,A,20/10/22,1900
+11,first_round,,,Bellerive Oval,B,21/10/22,1500
+12,first_round,,,Bellerive Oval,B,21/10/22,1900
 13,super_12,,,SCG,1,,
 14,super_12,,,Perth Stadium,1,,
