@@ -1,161 +1,161 @@
 share_id,participant_id,team_code,display_name,matches_played,total_points,total_shares,points_per_share
-1,1,ENG,England,3,0,23,0
-2,1,ENG,England,3,0,23,0
-3,1,ENG,England,3,0,23,0
-4,1,AUS,Australia,3,0,24,0
-5,1,AUS,Australia,3,0,24,0
-6,1,SCO,Scotland,3,0,4,0
-7,1,IRE,Ireland,3,0,7,0
-8,1,IND,India,3,0,20,0
-9,1,NZL,New Zealand,3,0,14,0
-10,1,RSA,South Africa,3,0,17,0
-11,2,AUS,Australia,3,0,24,0
-12,2,IND,India,3,0,20,0
-13,2,AUS,Australia,3,0,24,0
-14,2,ENG,England,3,0,23,0
-15,2,NZL,New Zealand,3,0,14,0
-16,2,ENG,England,3,0,23,0
-17,2,AUS,Australia,3,0,24,0
-18,2,LKA,Sri Lanka,3,0,8,0
-19,2,NZL,New Zealand,3,0,14,0
-20,2,RSA,South Africa,3,0,17,0
-21,3,IND,India,3,0,20,0
-22,3,RSA,South Africa,3,0,17,0
-23,3,AUS,Australia,3,0,24,0
-24,3,AUS,Australia,3,0,24,0
-25,3,ENG,England,3,0,23,0
-26,3,RSA,South Africa,3,0,17,0
-27,3,PAK,Pakistan,3,0,17,0
-28,3,IND,India,3,0,20,0
-29,3,ENG,England,3,0,23,0
-30,3,LKA,Sri Lanka,3,0,8,0
-31,4,ENG,England,3,0,23,0
-32,4,WIN,West Indies,3,0,9,0
-33,4,IND,India,3,0,20,0
-34,4,AUS,Australia,3,0,24,0
-35,4,IND,India,3,0,20,0
-36,4,PAK,Pakistan,3,0,17,0
-37,4,WIN,West Indies,3,0,9,0
-38,4,AUS,Australia,3,0,24,0
-39,4,RSA,South Africa,3,0,17,0
-40,4,PAK,Pakistan,3,0,17,0
-41,5,IND,India,3,0,20,0
-42,5,ENG,England,3,0,23,0
-43,5,PAK,Pakistan,3,0,17,0
-44,5,IND,India,3,0,20,0
-45,5,IND,India,3,0,20,0
-46,5,BAN,Bangladesh,3,0,3,0
-47,5,RSA,South Africa,3,0,17,0
-48,5,ENG,England,3,0,23,0
-49,5,RSA,South Africa,3,0,17,0
-50,5,LKA,Sri Lanka,3,0,8,0
-51,6,IND,India,3,0,20,0
-52,6,AFG,Afghanistan,3,0,5,0
-53,6,WIN,West Indies,3,0,9,0
-54,6,AUS,Australia,3,0,24,0
-55,6,IND,India,3,0,20,0
-56,6,ENG,England,3,0,23,0
-57,6,RSA,South Africa,3,0,17,0
-58,6,AUS,Australia,3,0,24,0
-59,6,AUS,Australia,3,0,24,0
-60,6,IND,India,3,0,20,0
-61,7,ENG,England,3,0,23,0
-62,7,ENG,England,3,0,23,0
-63,7,AFG,Afghanistan,3,0,5,0
-64,7,PAK,Pakistan,3,0,17,0
-65,7,WIN,West Indies,3,0,9,0
-66,7,ENG,England,3,0,23,0
-67,7,AFG,Afghanistan,3,0,5,0
-68,7,WIN,West Indies,3,0,9,0
-69,7,PAK,Pakistan,3,0,17,0
-70,7,LKA,Sri Lanka,3,0,8,0
-71,8,SCO,Scotland,3,0,4,0
-72,8,NED,Netherlands,3,2,3,0.6666666666666666
-73,8,NED,Netherlands,3,2,3,0.6666666666666666
-74,8,SCO,Scotland,3,0,4,0
-75,8,UAE,United Arab Emirates,4,0.2,1,0.2
-76,8,IRE,Ireland,3,0,7,0
-77,8,IRE,Ireland,3,0,7,0
-78,8,IRE,Ireland,3,0,7,0
-79,8,"NAM",Namibia,4,2.3,3,0.7666666666666666
-80,8,NED,Netherlands,3,2,3,0.6666666666666666
-81,9,LKA,Sri Lanka,3,0,8,0
-82,9,AUS,Australia,3,0,24,0
-83,9,AUS,Australia,3,0,24,0
-84,9,AUS,Australia,3,0,24,0
-85,9,IND,India,3,0,20,0
-86,9,RSA,South Africa,3,0,17,0
-87,9,IND,India,3,0,20,0
-88,9,ENG,England,3,0,23,0
-89,9,NZL,New Zealand,3,0,14,0
-90,9,PAK,Pakistan,3,0,17,0
-91,10,IRE,Ireland,3,0,7,0
-92,10,IRE,Ireland,3,0,7,0
-93,10,IRE,Ireland,3,0,7,0
-94,10,SCO,Scotland,3,0,4,0
-95,10,PAK,Pakistan,3,0,17,0
-96,10,AUS,Australia,3,0,24,0
-97,10,AUS,Australia,3,0,24,0
-98,10,AUS,Australia,3,0,24,0
-99,10,NZL,New Zealand,3,0,14,0
-100,10,NZL,New Zealand,3,0,14,0
-101,11,"NAM",Namibia,4,2.3,3,0.7666666666666666
-102,11,"NAM",Namibia,4,2.3,3,0.7666666666666666
-103,11,AUS,Australia,3,0,24,0
-104,11,AUS,Australia,3,0,24,0
-105,11,ENG,England,3,0,23,0
-106,11,PAK,Pakistan,3,0,17,0
-107,11,IND,India,3,0,20,0
-108,11,AUS,Australia,3,0,24,0
-109,11,ENG,England,3,0,23,0
-110,11,ENG,England,3,0,23,0
-111,12,PAK,Pakistan,3,0,17,0
-112,12,PAK,Pakistan,3,0,17,0
-113,12,PAK,Pakistan,3,0,17,0
-114,12,ENG,England,3,0,23,0
-115,12,ENG,England,3,0,23,0
-116,12,ENG,England,3,0,23,0
-117,12,RSA,South Africa,3,0,17,0
-118,12,AUS,Australia,3,0,24,0
-119,12,AUS,Australia,3,0,24,0
-120,12,LKA,Sri Lanka,3,0,8,0
-121,13,IND,India,3,0,20,0
-122,13,ZIM,Zimbabwe,3,0,2,0
-123,13,IND,India,3,0,20,0
-124,13,NZL,New Zealand,3,0,14,0
-125,13,NZL,New Zealand,3,0,14,0
-126,13,IND,India,3,0,20,0
-127,13,RSA,South Africa,3,0,17,0
-128,13,NZL,New Zealand,3,0,14,0
-129,13,RSA,South Africa,3,0,17,0
-130,13,RSA,South Africa,3,0,17,0
-131,14,WIN,West Indies,3,0,9,0
-132,14,PAK,Pakistan,3,0,17,0
-133,14,NZL,New Zealand,3,0,14,0
-134,14,RSA,South Africa,3,0,17,0
-135,14,PAK,Pakistan,3,0,17,0
-136,14,PAK,Pakistan,3,0,17,0
-137,14,RSA,South Africa,3,0,17,0
-138,14,WIN,West Indies,3,0,9,0
-139,14,NZL,New Zealand,3,0,14,0
-140,14,WIN,West Indies,3,0,9,0
-141,15,BAN,Bangladesh,3,0,3,0
-142,15,ZIM,Zimbabwe,3,0,2,0
-143,15,WIN,West Indies,3,0,9,0
-144,15,AFG,Afghanistan,3,0,5,0
-145,15,LKA,Sri Lanka,3,0,8,0
-146,15,NZL,New Zealand,3,0,14,0
-147,15,NZL,New Zealand,3,0,14,0
-148,15,AFG,Afghanistan,3,0,5,0
-149,15,BAN,Bangladesh,3,0,3,0
-150,15,RSA,South Africa,3,0,17,0
-151,16,PAK,Pakistan,3,0,17,0
-152,16,IND,India,3,0,20,0
-153,16,RSA,South Africa,3,0,17,0
-154,16,NZL,New Zealand,3,0,14,0
-155,16,PAK,Pakistan,3,0,17,0
-156,16,LKA,Sri Lanka,3,0,8,0
-157,16,ENG,England,3,0,23,0
-158,16,IND,India,3,0,20,0
-159,16,ENG,England,3,0,23,0
-160,16,AUS,Australia,3,0,24,0
+1,1,ENG,England,0,0,23,0
+2,1,ENG,England,0,0,23,0
+3,1,ENG,England,0,0,23,0
+4,1,AUS,Australia,0,0,24,0
+5,1,AUS,Australia,0,0,24,0
+6,1,SCO,Scotland,0,0,4,0
+7,1,IRE,Ireland,0,0,7,0
+8,1,IND,India,0,0,20,0
+9,1,NZL,New Zealand,0,0,14,0
+10,1,RSA,South Africa,0,0,17,0
+11,2,AUS,Australia,0,0,24,0
+12,2,IND,India,0,0,20,0
+13,2,AUS,Australia,0,0,24,0
+14,2,ENG,England,0,0,23,0
+15,2,NZL,New Zealand,0,0,14,0
+16,2,ENG,England,0,0,23,0
+17,2,AUS,Australia,0,0,24,0
+18,2,LKA,Sri Lanka,1,0,8,0
+19,2,NZL,New Zealand,0,0,14,0
+20,2,RSA,South Africa,0,0,17,0
+21,3,IND,India,0,0,20,0
+22,3,RSA,South Africa,0,0,17,0
+23,3,AUS,Australia,0,0,24,0
+24,3,AUS,Australia,0,0,24,0
+25,3,ENG,England,0,0,23,0
+26,3,RSA,South Africa,0,0,17,0
+27,3,PAK,Pakistan,0,0,17,0
+28,3,IND,India,0,0,20,0
+29,3,ENG,England,0,0,23,0
+30,3,LKA,Sri Lanka,1,0,8,0
+31,4,ENG,England,0,0,23,0
+32,4,WIN,West Indies,0,0,9,0
+33,4,IND,India,0,0,20,0
+34,4,AUS,Australia,0,0,24,0
+35,4,IND,India,0,0,20,0
+36,4,PAK,Pakistan,0,0,17,0
+37,4,WIN,West Indies,0,0,9,0
+38,4,AUS,Australia,0,0,24,0
+39,4,RSA,South Africa,0,0,17,0
+40,4,PAK,Pakistan,0,0,17,0
+41,5,IND,India,0,0,20,0
+42,5,ENG,England,0,0,23,0
+43,5,PAK,Pakistan,0,0,17,0
+44,5,IND,India,0,0,20,0
+45,5,IND,India,0,0,20,0
+46,5,BAN,Bangladesh,0,0,3,0
+47,5,RSA,South Africa,0,0,17,0
+48,5,ENG,England,0,0,23,0
+49,5,RSA,South Africa,0,0,17,0
+50,5,LKA,Sri Lanka,1,0,8,0
+51,6,IND,India,0,0,20,0
+52,6,AFG,Afghanistan,0,0,5,0
+53,6,WIN,West Indies,0,0,9,0
+54,6,AUS,Australia,0,0,24,0
+55,6,IND,India,0,0,20,0
+56,6,ENG,England,0,0,23,0
+57,6,RSA,South Africa,0,0,17,0
+58,6,AUS,Australia,0,0,24,0
+59,6,AUS,Australia,0,0,24,0
+60,6,IND,India,0,0,20,0
+61,7,ENG,England,0,0,23,0
+62,7,ENG,England,0,0,23,0
+63,7,AFG,Afghanistan,0,0,5,0
+64,7,PAK,Pakistan,0,0,17,0
+65,7,WIN,West Indies,0,0,9,0
+66,7,ENG,England,0,0,23,0
+67,7,AFG,Afghanistan,0,0,5,0
+68,7,WIN,West Indies,0,0,9,0
+69,7,PAK,Pakistan,0,0,17,0
+70,7,LKA,Sri Lanka,1,0,8,0
+71,8,SCO,Scotland,0,0,4,0
+72,8,NED,Netherlands,1,2,3,0.6666666666666666
+73,8,NED,Netherlands,1,2,3,0.6666666666666666
+74,8,SCO,Scotland,0,0,4,0
+75,8,UAE,United Arab Emirates,1,0.2,1,0.2
+76,8,IRE,Ireland,0,0,7,0
+77,8,IRE,Ireland,0,0,7,0
+78,8,IRE,Ireland,0,0,7,0
+79,8,"NAM",Namibia,1,2.3,3,0.7666666666666666
+80,8,NED,Netherlands,1,2,3,0.6666666666666666
+81,9,LKA,Sri Lanka,1,0,8,0
+82,9,AUS,Australia,0,0,24,0
+83,9,AUS,Australia,0,0,24,0
+84,9,AUS,Australia,0,0,24,0
+85,9,IND,India,0,0,20,0
+86,9,RSA,South Africa,0,0,17,0
+87,9,IND,India,0,0,20,0
+88,9,ENG,England,0,0,23,0
+89,9,NZL,New Zealand,0,0,14,0
+90,9,PAK,Pakistan,0,0,17,0
+91,10,IRE,Ireland,0,0,7,0
+92,10,IRE,Ireland,0,0,7,0
+93,10,IRE,Ireland,0,0,7,0
+94,10,SCO,Scotland,0,0,4,0
+95,10,PAK,Pakistan,0,0,17,0
+96,10,AUS,Australia,0,0,24,0
+97,10,AUS,Australia,0,0,24,0
+98,10,AUS,Australia,0,0,24,0
+99,10,NZL,New Zealand,0,0,14,0
+100,10,NZL,New Zealand,0,0,14,0
+101,11,"NAM",Namibia,1,2.3,3,0.7666666666666666
+102,11,"NAM",Namibia,1,2.3,3,0.7666666666666666
+103,11,AUS,Australia,0,0,24,0
+104,11,AUS,Australia,0,0,24,0
+105,11,ENG,England,0,0,23,0
+106,11,PAK,Pakistan,0,0,17,0
+107,11,IND,India,0,0,20,0
+108,11,AUS,Australia,0,0,24,0
+109,11,ENG,England,0,0,23,0
+110,11,ENG,England,0,0,23,0
+111,12,PAK,Pakistan,0,0,17,0
+112,12,PAK,Pakistan,0,0,17,0
+113,12,PAK,Pakistan,0,0,17,0
+114,12,ENG,England,0,0,23,0
+115,12,ENG,England,0,0,23,0
+116,12,ENG,England,0,0,23,0
+117,12,RSA,South Africa,0,0,17,0
+118,12,AUS,Australia,0,0,24,0
+119,12,AUS,Australia,0,0,24,0
+120,12,LKA,Sri Lanka,1,0,8,0
+121,13,IND,India,0,0,20,0
+122,13,ZIM,Zimbabwe,0,0,2,0
+123,13,IND,India,0,0,20,0
+124,13,NZL,New Zealand,0,0,14,0
+125,13,NZL,New Zealand,0,0,14,0
+126,13,IND,India,0,0,20,0
+127,13,RSA,South Africa,0,0,17,0
+128,13,NZL,New Zealand,0,0,14,0
+129,13,RSA,South Africa,0,0,17,0
+130,13,RSA,South Africa,0,0,17,0
+131,14,WIN,West Indies,0,0,9,0
+132,14,PAK,Pakistan,0,0,17,0
+133,14,NZL,New Zealand,0,0,14,0
+134,14,RSA,South Africa,0,0,17,0
+135,14,PAK,Pakistan,0,0,17,0
+136,14,PAK,Pakistan,0,0,17,0
+137,14,RSA,South Africa,0,0,17,0
+138,14,WIN,West Indies,0,0,9,0
+139,14,NZL,New Zealand,0,0,14,0
+140,14,WIN,West Indies,0,0,9,0
+141,15,BAN,Bangladesh,0,0,3,0
+142,15,ZIM,Zimbabwe,0,0,2,0
+143,15,WIN,West Indies,0,0,9,0
+144,15,AFG,Afghanistan,0,0,5,0
+145,15,LKA,Sri Lanka,1,0,8,0
+146,15,NZL,New Zealand,0,0,14,0
+147,15,NZL,New Zealand,0,0,14,0
+148,15,AFG,Afghanistan,0,0,5,0
+149,15,BAN,Bangladesh,0,0,3,0
+150,15,RSA,South Africa,0,0,17,0
+151,16,PAK,Pakistan,0,0,17,0
+152,16,IND,India,0,0,20,0
+153,16,RSA,South Africa,0,0,17,0
+154,16,NZL,New Zealand,0,0,14,0
+155,16,PAK,Pakistan,0,0,17,0
+156,16,LKA,Sri Lanka,1,0,8,0
+157,16,ENG,England,0,0,23,0
+158,16,IND,India,0,0,20,0
+159,16,ENG,England,0,0,23,0
+160,16,AUS,Australia,0,0,24,0

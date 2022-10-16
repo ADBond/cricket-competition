@@ -1,51 +1,7 @@
 team,event,points
-Afghanistan,yet_to_play in match vs England in super_12,0
-Afghanistan,yet_to_play in match vs New Zealand in super_12,0
-Afghanistan,yet_to_play in match vs Australia in super_12,0
-Australia,yet_to_play in match vs New Zealand in super_12,0
-Australia,yet_to_play in match vs England in super_12,0
-Australia,yet_to_play in match vs Afghanistan in super_12,0
-Bangladesh,yet_to_play in match vs South Africa in super_12,0
-Bangladesh,yet_to_play in match vs India in super_12,0
-Bangladesh,yet_to_play in match vs Pakistan in super_12,0
-England,yet_to_play in match vs Afghanistan in super_12,0
-England,yet_to_play in match vs Australia in super_12,0
-England,yet_to_play in match vs New Zealand in super_12,0
-India,yet_to_play in match vs Pakistan in super_12,0
-India,yet_to_play in match vs South Africa in super_12,0
-India,yet_to_play in match vs Bangladesh in super_12,0
-Ireland,yet_to_play in match vs Zimbabwe in first_round,0
-Ireland,yet_to_play in match vs Scotland in first_round,0
-Ireland,yet_to_play in match vs West Indies in first_round,0
 Sri Lanka,lose in match vs Namibia in first_round,0
-Sri Lanka,yet_to_play in match vs United Arab Emirates in first_round,0
-Sri Lanka,yet_to_play in match vs Netherlands in first_round,0
 Namibia,win in match vs Sri Lanka in first_round,2
-Namibia,yet_to_play in match vs Netherlands in first_round,0
-Namibia,yet_to_play in match vs United Arab Emirates in first_round,0
 Namibia,"bowled_out_opponent (vs Sri Lanka, in first_round)",0.3
 Netherlands,win in match vs United Arab Emirates in first_round,2
-Netherlands,yet_to_play in match vs Namibia in first_round,0
-Netherlands,yet_to_play in match vs Sri Lanka in first_round,0
-New Zealand,yet_to_play in match vs Australia in super_12,0
-New Zealand,yet_to_play in match vs Afghanistan in super_12,0
-New Zealand,yet_to_play in match vs England in super_12,0
-Pakistan,yet_to_play in match vs India in super_12,0
-Pakistan,yet_to_play in match vs South Africa in super_12,0
-Pakistan,yet_to_play in match vs Bangladesh in super_12,0
-South Africa,yet_to_play in match vs Bangladesh in super_12,0
-South Africa,yet_to_play in match vs India in super_12,0
-South Africa,yet_to_play in match vs Pakistan in super_12,0
-Scotland,yet_to_play in match vs West Indies in first_round,0
-Scotland,yet_to_play in match vs Ireland in first_round,0
-Scotland,yet_to_play in match vs Zimbabwe in first_round,0
 United Arab Emirates,lose in match vs Netherlands in first_round,0
-United Arab Emirates,yet_to_play in match vs Sri Lanka in first_round,0
-United Arab Emirates,yet_to_play in match vs Namibia in first_round,0
 United Arab Emirates,"close_loss (vs Netherlands, in first_round)",0.2
-West Indies,yet_to_play in match vs Scotland in first_round,0
-West Indies,yet_to_play in match vs Zimbabwe in first_round,0
-West Indies,yet_to_play in match vs Ireland in first_round,0
-Zimbabwe,yet_to_play in match vs Ireland in first_round,0
-Zimbabwe,yet_to_play in match vs West Indies in first_round,0
-Zimbabwe,yet_to_play in match vs Scotland in first_round,0
