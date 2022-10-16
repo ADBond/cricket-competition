@@ -1,3 +1,13 @@
 stage,group,team,matches,wins,losses,ties,nr,points,runs_scored,overs_faced,overs_faced_eff,runs_against,overs_bowled,overs_bowled_eff,nrr
 first_round,A,"NAM",1,1,0,0,0,2,163,20.0,20.0,108,19.0,20.0,2.75
+first_round,A,NED,1,1,0,0,0,2,112,19.5,19.5,111,20.0,20.0,0.09705882352941231
+first_round,A,UAE,1,0,1,0,0,0,111,20.0,20.0,112,19.5,19.5,-0.09705882352941231
 first_round,A,LKA,1,0,1,0,0,0,108,19.0,20.0,163,20.0,20.0,-2.75
+first_round,B,IRE,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+first_round,B,SCO,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+first_round,B,WIN,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+first_round,B,ZIM,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+super_12,1,AFG,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+super_12,1,AUS,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+super_12,1,ENG,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
+super_12,1,NZL,0,0,0,0,0,0,0,0.0,0.0,0,0.0,0.0,NA
