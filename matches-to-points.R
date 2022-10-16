@@ -197,12 +197,16 @@ df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
 if(Sys.getenv("WRITE") != ""){
-  write_csv(df_participant_points_by_share, glue("./{data_dir}/generated/participant-scores-by-share.csv"))
-  write_csv(df_participant_scores, glue("./{data_dir}/generated/participant-scores.csv"))
-  write_csv(df_team_points, glue("./{data_dir}/generated/team-points.csv"))
-  write_csv(df_group_tables, glue("./{data_dir}/generated/group-tables.csv"))
+  gen_dir <- glue("./{data_dir}/generated)")
+  if (!dir.exists(gen_dir)) {
+    dir.create(gen_dir, recursive = TRUE)
+  }
+  write_csv(df_participant_points_by_share, glue("./{gen_dir}/participant-scores-by-share.csv"))
+  write_csv(df_participant_scores, glue("./{gen_dir}/participant-scores.csv"))
+  write_csv(df_team_points, glue("./{gen_dir}/team-points.csv"))
+  write_csv(df_group_tables, glue("./{gen_dir}/group-tables.csv"))
   df_full_points %>%
     select(display_name, event, points) %>%
     rename(team = display_name) %>%
-    write_csv(glue("./{data_dir}/generated/team-points-breakdown.csv"))
+    write_csv(glue("./{gen_dir}/team-points-breakdown.csv"))
 }
