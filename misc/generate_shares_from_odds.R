@@ -70,7 +70,8 @@ df_teams_odds <- read_csv(glue("{misc_dir}/teams_odds.csv")) %>%
       .names="probsreal_{.col}"
     )
   ) %>%
-  rename_with(.fn= ~ str_replace(., "probs_", ""), .cols=starts_with("probsreal"))
+  rename_with(.fn= ~ str_replace(., "probs_", ""), .cols=starts_with("probsreal")) %>%
+  mutate(even_col = 1)
 
 df_teams_odds %>%
   summarise(across(contains("probs"), ~ sum(.x, na.rm = TRUE)))
@@ -79,15 +80,16 @@ df_teams_odds %>%
 # sample one at a time, in proportion to w/e columns
 # if we get to three of one, delete from list
 # if we get to nine with no first-round, then sample from only those
-sample_shares <- function(column, verbose=TRUE){
+sample_shares <- function(column, excluding=c(), required=10, require_fr=TRUE, verbose=TRUE){
   team_info <- df_teams_odds %>%
-    select(display_name, team_code, first_round, (!!column))
+    select(display_name, team_code, first_round, (!!column)) %>%
+    filter(!team_code %in% excluding)
   shares <- c()
   fr_teams <- team_info[["team_code"]][team_info[["first_round"]]]
   opts <- team_info[[column]]
   names(opts) <- team_info[["team_code"]]
 
-  while(length(shares) < 10) {
+  while(length(shares) < required) {
     candidate <- sample(names(opts), 1, prob = opts/sum(opts))
     shares <- c(shares, candidate)
     if (length(shares[shares == candidate]) == 3) {
@@ -97,7 +99,7 @@ sample_shares <- function(column, verbose=TRUE){
       }
       opts <- opts[names(opts) != candidate]
     }
-    if (length(shares) == 9 & !any(fr_teams %in% shares)) {
+    if (require_fr & length(shares) == (required - 1) & !any(fr_teams %in% shares)) {
       if (verbose) {
         message("need min number of first-round teams! deleting big teams...")
         message("\t", paste0(shares, collapse = ", "))
@@ -115,6 +117,6 @@ sample_shares("oddsagainst_oa_mean")
 clipr::write_clip(sample_shares("odds_o_mean"))
 clipr::write_clip(sample_shares("oddsagainst_oa_mean"))
 clipr::write_clip(sample_shares("probsreal_o_mean"))
+clipr::write_clip(sample_shares("even_col"))
 
-# TODO: excluding some teams, with limited number, with/out first round
-sample_shares(col, excluding=c("ENG"), 7, require_fr=FALSE)
+sample_shares("odds_o_mean", excluding=c("ENG"), 6, require_fr=FALSE)
