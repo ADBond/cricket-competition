@@ -197,7 +197,7 @@ df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
 if(Sys.getenv("WRITE") != ""){
-  gen_dir <- glue("./{data_dir}/generated)")
+  gen_dir <- glue("./{data_dir}/generated")
   if (!dir.exists(gen_dir)) {
     dir.create(gen_dir, recursive = TRUE)
   }
