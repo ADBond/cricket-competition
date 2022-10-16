@@ -84,8 +84,8 @@ df_participant_shares %>%
 
 df <- df_matches %>%
   right_join(df_match_teams, by="match_number") %>%
-  # mutate(result = tidyr::replace_na(result, "yet_to_play")) %>%
-  filter(!is.na(result)) %>%
+  mutate(result = tidyr::replace_na(result, "yet_to_play")) %>%
+  # filter(!is.na(result)) %>%
   mutate(result_points = points_config[["match-result-points"]][result] %>% unlist) %>%
   mutate(multiplier = points_config[["stage-multipliers"]][stage] %>% unlist) %>%
   mutate(team_points = multiplier * result_points)
@@ -97,6 +97,14 @@ df_head_to_head <- df %>%
   select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points) %>%
   self_join(team, by=c("match_number", "stage", "group", "multiplier"), suffix=c("_main", "_opponent")) %>%
   filter(team_main != team_opponent) %>%
+  # replacing missing
+  mutate(runs_main = tidyr::replace_na(runs_main, 0)) %>%
+  mutate(wickets_main = tidyr::replace_na(wickets_main, 0)) %>%
+  mutate(overs_main = tidyr::replace_na(overs_main, 0)) %>%
+  mutate(runs_opponent = tidyr::replace_na(runs_opponent, 0)) %>%
+  mutate(wickets_opponent = tidyr::replace_na(wickets_opponent, 0)) %>%
+  mutate(overs_opponent = tidyr::replace_na(overs_opponent, 0)) %>%
+  #
   mutate(
     overs_faced_eff = overs_to_raw_balls(
       if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
@@ -113,7 +121,7 @@ df_head_to_head <- df %>%
   # automatic bonuses
   mutate(bonus_close_loss = (result_main == "lose") & nrr > -1) %>%
   mutate(bonus_bowled_out_opponent = (wickets_opponent == 10)) %>%
-  mutate(bonus_no_wickets_lost = (wickets_main == 0))
+  mutate(bonus_no_wickets_lost = (wickets_main == 0 & result_main != "yet_to_play"))
 
 df_auto_bonus <- df_head_to_head %>%
   select(stage, multiplier, team_main, team_opponent, starts_with("bonus")) %>%
@@ -188,7 +196,7 @@ df_group_tables <- df_head_to_head %>%
   filter(!is.na(group)) %>%
   group_by(stage, group, team_main) %>%
   summarise(
-    matches = length(result_main),
+    matches = length(result_main[result_main != "yet_to_play"]),
     wins = sum(result_main == "win"),
     losses = sum(result_main == "lose"),
     ties = sum(result_main == "tie"),
