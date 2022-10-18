@@ -49,6 +49,16 @@ def subs_from_yaml(yaml_file):
     }
 
 
+def enlinken(names, ids):
+    enlinkened_names = []
+    for name, p_id in zip(names, ids):
+        href = f"./person_{p_id}.html"
+        enlinkened_names.append(
+            f"<a href='{href}'>{name}</a>"
+        )
+    return enlinkened_names
+
+
 STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
 SITE_DIR = "competitions-site"
@@ -119,11 +129,15 @@ for comp, subs in comp_substitutions.items():
         ).rename(
             columns={"display_name": "name"}
         )
-    participant_league_table_with_links["total_points"] = np.round(participant_league_table_with_links["total_points"], 4)
-    participant_league_table_with_links = participant_league_table_with_links[["name", "total_points"]]
+    participant_league_table_with_links["Total points"] = np.round(participant_league_table_with_links["total_points"], 4)
+    participant_league_table_with_links["Name"] = enlinken(
+        participant_league_table_with_links["name"],
+        participant_league_table_with_links["id"]
+    )
+    participant_league_table_with_links = participant_league_table_with_links[["Name", "Total points"]]
     lb_subs = {
         "title": subs["title"],
-        "participant_league_table_with_links": participant_league_table_with_links.to_html(index=False)
+        "participant_league_table_with_links": participant_league_table_with_links.to_html(index=False, escape=False)
     }
 
     with open(os.path.join(SITE_DIR, comp, f"leaderboard.html"), "w+", encoding="utf8") as f:
