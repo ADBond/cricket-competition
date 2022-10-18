@@ -126,9 +126,8 @@ for comp, subs in comp_substitutions.items():
     )
     df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
     df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
-    # TODO: sort by something, such as alphabet?
+
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
-    # print(teams)
     participants = df_participants.to_dict(orient="records")
 
     with open(new_full_file, "w+", encoding="utf8") as f:
@@ -162,10 +161,23 @@ for comp, subs in comp_substitutions.items():
     df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
     for code, team in teams.items():
         df_team_points = df_points[df_points["team"] == team]
+        total_points = df_team_points["points"].sum()
+        sum_row = pd.DataFrame(
+            [{"team": "", "event": "<strong>total</total>", "points": f"<strong>{total_points}</strong>"}]
+        )
+        df_team_points = pd.concat(
+            [
+                df_team_points,
+                sum_row,
+            ],
+            ignore_index=True
+        )
         team_file = os.path.join(SITE_DIR, comp, make_team_link(code))
+        # TODO (right now): total of points + table for shares breakdown
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
-                team_points_table = df_team_points.to_html(index=False),
+                team_points_table = df_team_points.to_html(index=False, escape=False),
+                total = total_points,
                 title = f"{team} - {subs['title']}",
                 comp_home = file
             ))
