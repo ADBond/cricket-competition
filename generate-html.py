@@ -172,12 +172,28 @@ for comp, subs in comp_substitutions.items():
             ],
             ignore_index=True
         )
+
+        df_team_shares = df_people_points[df_people_points["team_code"] == code]
+        total_shares = df_team_shares["total_shares"].unique()[0]
+        share_value = df_team_shares["points_per_share"].unique()[0]
+        df_team_shares = df_team_shares.merge(
+            df_participants, how="left", left_on="participant_id", right_on="id",
+            suffixes=["_team", "_person"]
+        )
+        df_team_shares = df_team_shares.sort_values(["display_name_person", "participant_id"])
+        df_team_shares["person"] = enlinken(
+            df_team_shares["display_name_person"], df_team_shares["participant_id"], "person"
+        )
+        df_team_shares = df_team_shares[["person"]]
         team_file = os.path.join(SITE_DIR, comp, make_team_link(code))
-        # TODO (right now): total of points + table for shares breakdown
+        # TODO: group table filtered on team page?
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False, escape=False),
+                team_shares_table = df_team_shares.to_html(index=False, escape=False),
                 total = total_points,
+                total_shares = total_shares,
+                share_value = share_value,
                 title = f"{team} - {subs['title']}",
                 comp_home = file
             ))
@@ -186,7 +202,8 @@ for comp, subs in comp_substitutions.items():
     for participant in participants:
         p_id = participant["id"]
         p_name = participant["display_name"]
-        # TODO: eliminated flag???
+        # TODO: eliminated flag for each team???
+        # TODO: total points, much like on the team pages
         df_person_points = df_people_points[df_people_points["participant_id"] == p_id]
         df_person_points = df_person_points.sort_values(["points_per_share", "team_code"], ascending=[False, True])
         df_person_points["Team"] = enlinken(
@@ -194,7 +211,7 @@ for comp, subs in comp_substitutions.items():
         )
         df_person_points = df_person_points[["Team", "matches_played", "points_per_share"]]
         df_person_points = df_person_points.rename(
-            {"matches_played": "Matches played", "points_per_share": "Points/share"}
+            columns={"matches_played": "Matches played", "points_per_share": "Points/share"}
         )
         person_file = os.path.join(SITE_DIR, comp, make_person_link(p_id))
         with open(person_file, "w+", encoding="utf8") as f:
