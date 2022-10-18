@@ -16,6 +16,18 @@ self_join <- function(x, ...){
   x %>%
     left_join(x, ...)
 }
+list_from <- function(base_list, indices){
+  logical_indices_not_in_base_list <- !indices %in% names(base_list)
+  if (any(logical_indices_not_in_base_list)) {
+    msg_string <- paste0(indices[logical_indices_not_in_base_list], collapse=', ')
+    stop(
+      glue(
+        "Could not find bonus points for event(s): {msg_string}"
+      )
+    )
+  }
+  return(base_list[indices])
+}
 # crickety utilities
 overs_to_raw_balls <- function(x){
   # vectorising hack
@@ -49,7 +61,7 @@ df_match_teams <- read_csv(glue("{data_dir}/match_teams.csv"))
 df_participant_shares <- read_csv(glue("{data_dir}/participant_shares.csv"))
 df_bonus_points <- read_csv(glue("{data_dir}/bonus_points.csv")) %>%
   mutate(
-    bonus_points = points_config[["bonus-points"]][bonus_event] %>%
+    bonus_points = list_from(points_config[["bonus-points"]], bonus_event) %>%
       replace_null() %>%
       unlist() %>%
       tidyr::replace_na(0) %>%

@@ -1,12 +1,12 @@
 team,display_name,matches_played,total_points,total_shares,points_per_share
-"NAM",Namibia,1,2.3,3,0.7666666666666666
-NED,Netherlands,1,2,3,0.6666666666666666
-UAE,United Arab Emirates,1,0.2,1,0.2
-LKA,Sri Lanka,1,0,8,0
-SCO,Scotland,0,0,4,0
-WIN,West Indies,0,0,9,0
-IRE,Ireland,0,0,7,0
-ZIM,Zimbabwe,0,0,2,0
+NED,Netherlands,1,4,3,1.3333333333333333
+UAE,United Arab Emirates,1,1.2,1,1.2
+ZIM,Zimbabwe,1,2,2,1
+"NAM",Namibia,1,2.5,3,0.8333333333333334
+SCO,Scotland,1,2.3,4,0.575
+LKA,Sri Lanka,1,2.3,8,0.2875
+IRE,Ireland,1,0,7,0
+WIN,West Indies,1,0,9,0
 AFG,Afghanistan,0,0,5,0
 AUS,Australia,0,0,24,0
 ENG,England,0,0,23,0
