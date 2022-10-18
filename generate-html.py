@@ -8,6 +8,7 @@ from yaml import full_load as yaml_load
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 import pandas as pd
+import numpy as np
 
 
 # super hard-code for now
@@ -114,11 +115,15 @@ for comp, subs in comp_substitutions.items():
         os.makedirs(comp_folder)
     
     participant_league_table_with_links = df_people_points_tot.merge(
-        df_participants, how="left", left_on="participant_id", right_on="id"
-    )
+            df_participants, how="left", left_on="participant_id", right_on="id"
+        ).rename(
+            columns={"display_name": "name"}
+        )
+    participant_league_table_with_links["total_points"] = np.round(participant_league_table_with_links["total_points"], 4)
+    participant_league_table_with_links = participant_league_table_with_links[["name", "total_points"]]
     lb_subs = {
         "title": subs["title"],
-        "participant_league_table_with_links": participant_league_table_with_links.to_html()
+        "participant_league_table_with_links": participant_league_table_with_links.to_html(index=False)
     }
 
     with open(os.path.join(SITE_DIR, comp, f"leaderboard.html"), "w+", encoding="utf8") as f:
