@@ -1,0 +1,11 @@
+{% extends "base.jinja" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="../static/style.css" />
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block footer %}
+<a href="../{{ comp_home }}">Competition home</a>
+{% endblock %}

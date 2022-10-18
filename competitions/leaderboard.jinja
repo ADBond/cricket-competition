@@ -1,13 +1,5 @@
-{% extends "base.jinja" %}
-{% block title %}{{ title }}{% endblock %}
-{% block head %}
-{{ super() }}
-
-<link rel="stylesheet" href="../static/style.css" />
-{% endblock %}
+{% extends "comp_base.jinja" %}
 {% block content %}
-
-
 <div id="leaderboard-table">
 {{ participant_league_table_with_links }}
 </div>

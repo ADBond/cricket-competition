@@ -136,7 +136,7 @@ for comp, subs in comp_substitutions.items():
     )
     participant_league_table_with_links = participant_league_table_with_links[["Name", "Total points"]]
     lb_subs = {
-        "title": subs["title"],
+        "title": f"Leaderboard - {subs['title']}",
         "participant_league_table_with_links": participant_league_table_with_links.to_html(index=False, escape=False)
     }
 
@@ -150,7 +150,9 @@ for comp, subs in comp_substitutions.items():
         team_file = os.path.join(SITE_DIR, comp, f"{code}.html")
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
-                team_points_table = df_team_points.to_html(index=False), title = f"{team} - {subs['title']}"
+                team_points_table = df_team_points.to_html(index=False),
+                title = f"{team} - {subs['title']}",
+                comp_home = file
             ))
 
     person_template = env.get_template("person_page.jinja")
@@ -161,7 +163,9 @@ for comp, subs in comp_substitutions.items():
         person_file = os.path.join(SITE_DIR, comp, f"person_{p_id}.html")
         with open(person_file, "w+", encoding="utf8") as f:
             f.write(person_template.render(
-                person_points_table = df_person_points.to_html(index=False), title = f"{p_name} - {subs['title']}"
+                person_points_table = df_person_points.to_html(index=False),
+                title = f"{p_name} - {subs['title']}",
+                comp_home = file
             ))
 
 for file in os.listdir(STATIC_FOLDER):
