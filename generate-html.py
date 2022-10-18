@@ -114,6 +114,8 @@ for file, subs in tl_substitutions.items():
     with open(new_full_file, "w+", encoding="utf8") as f:
         f.write(template.render(**subs))
 
+# TODO: maybe on team page instead of person + full list have person, num_shares
+# TODO: and similarly on person page for teams
 for comp, subs in comp_substitutions.items():
     comp_template = env.get_template("competition_home.jinja")
     lb_template = env.get_template("leaderboard.jinja")
