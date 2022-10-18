@@ -99,6 +99,8 @@ for comp, subs in comp_substitutions.items():
 
     df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv"))
     df_participants = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "participants.csv"))
+    df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
+    df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
     # TODO: sort by something, such as alphabet?
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     # print(teams)
@@ -111,9 +113,12 @@ for comp, subs in comp_substitutions.items():
     if not os.path.exists(comp_folder):
         os.makedirs(comp_folder)
     
+    participant_league_table_with_links = df_people_points_tot.merge(
+        df_participants, how="left", left_on="participant_id", right_on="id"
+    )
     lb_subs = {
         "title": subs["title"],
-        "participant_league_table_with_links": "placeholder"
+        "participant_league_table_with_links": participant_league_table_with_links.to_html()
     }
 
     with open(os.path.join(SITE_DIR, comp, f"leaderboard.html"), "w+", encoding="utf8") as f:
@@ -130,7 +135,6 @@ for comp, subs in comp_substitutions.items():
             ))
 
     person_template = env.get_template("person_page.jinja")
-    df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
     for participant in participants:
         p_id = participant["id"]
         p_name = participant["display_name"]
