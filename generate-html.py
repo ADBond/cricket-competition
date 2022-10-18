@@ -49,10 +49,22 @@ def subs_from_yaml(yaml_file):
     }
 
 
-def enlinken(names, ids):
+def make_person_link(p_id):
+    return f"person_{p_id}.html"
+def make_team_link(code):
+    return f"{code}.html"
+
+link_format_lookup = {
+    "person": make_person_link,
+    "team": make_team_link,
+}
+def enlinken(names, ids, link_format):
+    if link_format not in link_format_lookup.keys():
+        raise ValueError(f"link format must be one of: {list(link_format_lookup.keys())}, not '{link_format}'")
+    func = link_format_lookup[link_format]
     enlinkened_names = []
     for name, p_id in zip(names, ids):
-        href = f"./person_{p_id}.html"
+        href = f"./{func(p_id)}"
         enlinkened_names.append(
             f"<a href='{href}'>{name}</a>"
         )
@@ -108,8 +120,10 @@ for comp, subs in comp_substitutions.items():
     file = f"{comp}.html"
     new_full_file = os.path.join(SITE_DIR, file)
 
-    df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv"))
-    df_participants = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "participants.csv"))
+    df_teams = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "teams.csv")).sort_values(by="display_name")
+    df_participants = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "participants.csv")).sort_values(
+        by=["display_name", "id"]
+    )
     df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
     df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
     # TODO: sort by something, such as alphabet?
@@ -132,7 +146,8 @@ for comp, subs in comp_substitutions.items():
     participant_league_table_with_links["Total points"] = np.round(participant_league_table_with_links["total_points"], 4)
     participant_league_table_with_links["Name"] = enlinken(
         participant_league_table_with_links["name"],
-        participant_league_table_with_links["id"]
+        participant_league_table_with_links["id"],
+        "person"
     )
     participant_league_table_with_links = participant_league_table_with_links[["Name", "Total points"]]
     lb_subs = {
@@ -147,7 +162,7 @@ for comp, subs in comp_substitutions.items():
     df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
     for code, team in teams.items():
         df_team_points = df_points[df_points["team"] == team]
-        team_file = os.path.join(SITE_DIR, comp, f"{code}.html")
+        team_file = os.path.join(SITE_DIR, comp, make_team_link(code))
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False),
@@ -159,11 +174,20 @@ for comp, subs in comp_substitutions.items():
     for participant in participants:
         p_id = participant["id"]
         p_name = participant["display_name"]
+        # TODO: eliminated flag???
         df_person_points = df_people_points[df_people_points["participant_id"] == p_id]
-        person_file = os.path.join(SITE_DIR, comp, f"person_{p_id}.html")
+        df_person_points = df_person_points.sort_values(["points_per_share", "team_code"], ascending=[False, True])
+        df_person_points["Team"] = enlinken(
+            df_person_points["display_name"], df_person_points["team_code"], "team"
+        )
+        df_person_points = df_person_points[["Team", "matches_played", "points_per_share"]]
+        df_person_points = df_person_points.rename(
+            {"matches_played": "Matches played", "points_per_share": "Points/share"}
+        )
+        person_file = os.path.join(SITE_DIR, comp, make_person_link(p_id))
         with open(person_file, "w+", encoding="utf8") as f:
             f.write(person_template.render(
-                person_points_table = df_person_points.to_html(index=False),
+                person_points_table = df_person_points.to_html(index=False, escape=False),
                 title = f"{p_name} - {subs['title']}",
                 comp_home = file
             ))
