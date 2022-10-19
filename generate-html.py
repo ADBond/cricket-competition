@@ -116,6 +116,7 @@ for file, subs in tl_substitutions.items():
 
 # TODO: maybe on team page instead of person + full list have person, num_shares
 # TODO: and similarly on person page for teams
+# TODO: results on team page even??
 for comp, subs in comp_substitutions.items():
     comp_template = env.get_template("competition_home.jinja")
     lb_template = env.get_template("leaderboard.jinja")
@@ -205,13 +206,17 @@ for comp, subs in comp_substitutions.items():
         p_id = participant["id"]
         p_name = participant["display_name"]
         # TODO: eliminated flag for each team???
-        # TODO: total points, much like on the team pages
         df_person_points = df_people_points[df_people_points["participant_id"] == p_id]
         df_person_points = df_person_points.sort_values(["points_per_share", "team_code"], ascending=[False, True])
         df_person_points["Team"] = enlinken(
             df_person_points["display_name"], df_person_points["team_code"], "team"
         )
         df_person_points = df_person_points[["Team", "matches_played", "points_per_share"]]
+        total_points = df_person_points["points_per_share"].sum()
+        sum_row = pd.DataFrame(
+            [{"Team": "<strong>total</total>", "matches_played": "", "points_per_share": f"<strong>{total_points}</strong>"}]
+        )
+        df_person_points = pd.concat([df_person_points, sum_row], ignore_index=True)
         df_person_points = df_person_points.rename(
             columns={"matches_played": "Matches played", "points_per_share": "Points/share"}
         )
