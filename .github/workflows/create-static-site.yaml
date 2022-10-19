@@ -19,3 +19,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate static site files
         run: python3 generate-html.py
+      - name: Create site tar archive for uploading
+        run: tar -czf github-pages competitions-site/
+      - uses: actions/upload-pages-artifact
+      - uses: actions/deploy-pages@v1
