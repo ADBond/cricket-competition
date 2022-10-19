@@ -1,5 +1,6 @@
 team,event,points
 Ireland,lose in match vs Zimbabwe in first_round,0
+Ireland,win in match vs Scotland in first_round,2
 Sri Lanka,lose in match vs Namibia in first_round,0
 Sri Lanka,win in match vs United Arab Emirates in first_round,2
 Sri Lanka,"bowled_out_opponent (vs United Arab Emirates, in first_round)",0.3
@@ -10,7 +11,9 @@ Namibia,"close_loss (vs Netherlands, in first_round)",0.2
 Netherlands,win in match vs United Arab Emirates in first_round,2
 Netherlands,win in match vs Namibia in first_round,2
 Scotland,win in match vs West Indies in first_round,2
+Scotland,lose in match vs Ireland in first_round,0
 Scotland,"bowled_out_opponent (vs West Indies, in first_round)",0.3
+Scotland,"close_loss (vs Ireland, in first_round)",0.2
 United Arab Emirates,lose in match vs Netherlands in first_round,0
 United Arab Emirates,lose in match vs Sri Lanka in first_round,0
 United Arab Emirates,hat_trick (Karthik Meiyappan vs Sri Lanka),1
