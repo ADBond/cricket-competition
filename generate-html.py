@@ -71,13 +71,24 @@ def enlinken(names, ids, link_format):
     return enlinkened_names
 
 def get_info(df_group_tables, team):
-    if team not in df_group_tables["team"].values:
+    if team not in df_group_tables["display_name"].values:
         return None
-    team_row = df_group_tables[df_group_tables["team"] == team]
+    team_row = df_group_tables[df_group_tables["display_name"] == team]
     group = team_row["group"].unique()
     if len(group) > 1:
         raise ValueError(f"More than one team table found for team {team} ({group})")
     gp_tab = df_group_tables[df_group_tables["group"].isin(group)]
+    gp_rename = {
+        "display_name": "Team",
+        "matches": "Matches played", "wins": "Wins", "losses": "Losses",
+        "ties": "Ties", "nr": "No-results", "points": "Points", "nrr": "Net Run Rate",
+        "runs_scored": "Runs scored", "overs_faced": "Overs faced",
+        "runs_against": "Runs conceded", "overs_bowled": "Overs bowled",
+        "overs_faced_eff": "Overs faced (effective)", 
+        "overs_bowled_eff": "Overs bowled (effective)",
+    }
+    gp_tab = gp_tab[gp_rename.keys()]
+    gp_tab = gp_tab.rename(columns=gp_rename)
     return {
         "table_ind": group[0],
         "table": gp_tab.to_html(index=False)
@@ -142,7 +153,9 @@ for comp, subs in comp_substitutions.items():
     df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
     df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
     
-    df_group_tables = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "group-tables.csv"))
+    df_group_tables = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "group-tables.csv")).merge(
+        df_teams, how="left", left_on="team", right_on="code"
+    )
 
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     participants = df_participants.to_dict(orient="records")
@@ -207,10 +220,9 @@ for comp, subs in comp_substitutions.items():
         stages = df_group_tables["stage"].unique()
         team_tables = {
             stage: info
-            for stage in stages if (info := get_info(df_group_tables[df_group_tables["stage"] == stage], code)) is not None
+            for stage in stages if (info := get_info(df_group_tables[df_group_tables["stage"] == stage], team)) is not None
         }
-        # print(team)
-        # print(team_tables)
+
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False, escape=False),
