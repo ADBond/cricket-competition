@@ -22,4 +22,6 @@ jobs:
       - name: Create site tar archive for uploading
         run: tar -czf github-pages competitions-site/
       - uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'github-pages'
       - uses: actions/deploy-pages@v1
