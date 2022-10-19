@@ -6,7 +6,7 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 5,first_round,NAM,NAM,Kardinia Park,A,18/10/22,1500
 6,first_round,UAE,LKA,Kardinia Park,A,18/10/22,1900
 7,first_round,SCO,SCO,Bellerive Oval,B,19/10/22,1500
-8,first_round,,,Bellerive Oval,B,19/10/22,1900
+8,first_round,WIN,WIN,Bellerive Oval,B,19/10/22,1900
 9,first_round,,,Kardinia Park,A,20/10/22,1500
 10,first_round,,,Kardinia Park,A,20/10/22,1900
 11,first_round,,,Bellerive Oval,B,21/10/22,1500
