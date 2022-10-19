@@ -19,4 +19,7 @@ United Arab Emirates,lose in match vs Sri Lanka in first_round,0
 United Arab Emirates,hat_trick (Karthik Meiyappan vs Sri Lanka),1
 United Arab Emirates,"close_loss (vs Netherlands, in first_round)",0.2
 West Indies,lose in match vs Scotland in first_round,0
+West Indies,win in match vs Zimbabwe in first_round,2
+West Indies,"bowled_out_opponent (vs Zimbabwe, in first_round)",0.3
 Zimbabwe,win in match vs Ireland in first_round,2
+Zimbabwe,lose in match vs West Indies in first_round,0

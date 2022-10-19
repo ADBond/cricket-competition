@@ -30,12 +30,12 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 29,3,ENG,England,0,0,23,0
 30,3,LKA,Sri Lanka,1,2.3,8,0.2875
 31,4,ENG,England,0,0,23,0
-32,4,WIN,West Indies,1,0,9,0
+32,4,WIN,West Indies,1,2.3,9,0.25555555555555554
 33,4,IND,India,0,0,20,0
 34,4,AUS,Australia,0,0,24,0
 35,4,IND,India,0,0,20,0
 36,4,PAK,Pakistan,0,0,17,0
-37,4,WIN,West Indies,1,0,9,0
+37,4,WIN,West Indies,1,2.3,9,0.25555555555555554
 38,4,AUS,Australia,0,0,24,0
 39,4,RSA,South Africa,0,0,17,0
 40,4,PAK,Pakistan,0,0,17,0
@@ -51,7 +51,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 50,5,LKA,Sri Lanka,1,2.3,8,0.2875
 51,6,IND,India,0,0,20,0
 52,6,AFG,Afghanistan,0,0,5,0
-53,6,WIN,West Indies,1,0,9,0
+53,6,WIN,West Indies,1,2.3,9,0.25555555555555554
 54,6,AUS,Australia,0,0,24,0
 55,6,IND,India,0,0,20,0
 56,6,ENG,England,0,0,23,0
@@ -63,10 +63,10 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 62,7,ENG,England,0,0,23,0
 63,7,AFG,Afghanistan,0,0,5,0
 64,7,PAK,Pakistan,0,0,17,0
-65,7,WIN,West Indies,1,0,9,0
+65,7,WIN,West Indies,1,2.3,9,0.25555555555555554
 66,7,ENG,England,0,0,23,0
 67,7,AFG,Afghanistan,0,0,5,0
-68,7,WIN,West Indies,1,0,9,0
+68,7,WIN,West Indies,1,2.3,9,0.25555555555555554
 69,7,PAK,Pakistan,0,0,17,0
 70,7,LKA,Sri Lanka,1,2.3,8,0.2875
 71,8,SCO,Scotland,1,2.5,4,0.625
@@ -129,19 +129,19 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 128,13,NZL,New Zealand,0,0,14,0
 129,13,RSA,South Africa,0,0,17,0
 130,13,RSA,South Africa,0,0,17,0
-131,14,WIN,West Indies,1,0,9,0
+131,14,WIN,West Indies,1,2.3,9,0.25555555555555554
 132,14,PAK,Pakistan,0,0,17,0
 133,14,NZL,New Zealand,0,0,14,0
 134,14,RSA,South Africa,0,0,17,0
 135,14,PAK,Pakistan,0,0,17,0
 136,14,PAK,Pakistan,0,0,17,0
 137,14,RSA,South Africa,0,0,17,0
-138,14,WIN,West Indies,1,0,9,0
+138,14,WIN,West Indies,1,2.3,9,0.25555555555555554
 139,14,NZL,New Zealand,0,0,14,0
-140,14,WIN,West Indies,1,0,9,0
+140,14,WIN,West Indies,1,2.3,9,0.25555555555555554
 141,15,BAN,Bangladesh,0,0,3,0
 142,15,ZIM,Zimbabwe,1,2,2,1
-143,15,WIN,West Indies,1,0,9,0
+143,15,WIN,West Indies,1,2.3,9,0.25555555555555554
 144,15,AFG,Afghanistan,0,0,5,0
 145,15,LKA,Sri Lanka,1,2.3,8,0.2875
 146,15,NZL,New Zealand,0,0,14,0
