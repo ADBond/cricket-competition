@@ -9,6 +9,12 @@
     <li>Share value: {{ share_value }}</li>
 </ul>
 </div>
+<div id="group-tables">
+{% for stage, info in team_tables.items() %}
+Table - group {{ info["table_ind"] }} (tournament stage {{ stage }} )
+<div>{{ info["table"] }}</div>
+{% endfor %}
+</div>
 Shares:
 <div id="team-shares">
 {{ team_shares_table }}

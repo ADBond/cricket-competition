@@ -70,6 +70,18 @@ def enlinken(names, ids, link_format):
         )
     return enlinkened_names
 
+def get_info(df_group_tables, team):
+    if team not in df_group_tables["team"].values:
+        return None
+    team_row = df_group_tables[df_group_tables["team"] == team]
+    group = team_row["group"].unique()
+    if len(group) > 1:
+        raise ValueError(f"More than one team table found for team {team} ({group})")
+    gp_tab = df_group_tables[df_group_tables["group"].isin(group)]
+    return {
+        "table_ind": group[0],
+        "table": gp_tab.to_html(index=False)
+    }
 
 STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
@@ -129,6 +141,8 @@ for comp, subs in comp_substitutions.items():
     )
     df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
     df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
+    
+    df_group_tables = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "group-tables.csv"))
 
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     participants = df_participants.to_dict(orient="records")
@@ -189,7 +203,14 @@ for comp, subs in comp_substitutions.items():
         )
         df_team_shares = df_team_shares[["person"]]
         team_file = os.path.join(SITE_DIR, comp, make_team_link(code))
-        # TODO: group table filtered on team page?
+
+        stages = df_group_tables["stage"].unique()
+        team_tables = {
+            stage: info
+            for stage in stages if (info := get_info(df_group_tables[df_group_tables["stage"] == stage], code)) is not None
+        }
+        # print(team)
+        # print(team_tables)
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False, escape=False),
@@ -197,6 +218,7 @@ for comp, subs in comp_substitutions.items():
                 total = total_points,
                 total_shares = total_shares,
                 share_value = share_value,
+                team_tables = team_tables,
                 title = f"{team} - {subs['title']}",
                 comp_home = file
             ))
