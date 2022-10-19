@@ -1,14 +1,22 @@
-{% extends "base.jinja" %}
-{% block title %}{{ title }}{% endblock %}
-{% block head %}
-{{ super() }}
-
-    <link rel="stylesheet" href="../static/style.css" />
-{% endblock %}
+{% extends "comp_base.jinja" %}
 {% block content %}
-
-
 <div id="team-points">
 {{ team_points_table }}
+</div>
+<div>
+<ul>
+    <li>Total shares: {{ total_shares }}</li>
+    <li>Share value: {{ share_value }}</li>
+</ul>
+</div>
+<div id="group-tables">
+{% for stage, info in team_tables.items() %}
+Table - group {{ info["table_ind"] }} (tournament stage {{ stage }} )
+<div>{{ info["table"] }}</div>
+{% endfor %}
+</div>
+Shares:
+<div id="team-shares">
+{{ team_shares_table }}
 </div>
 {% endblock %}
