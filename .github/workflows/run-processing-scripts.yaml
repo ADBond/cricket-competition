@@ -38,4 +38,5 @@ jobs:
         run: |
           git push origin main || echo "No changes to commit"
           git checkout -b deployed
+          git fetch origin deployed
           git push -u origin deployed || echo "No changes to push to deployment"
