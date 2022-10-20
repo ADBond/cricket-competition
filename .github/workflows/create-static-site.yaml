@@ -3,15 +3,11 @@ run-name: ${{ github.actor }} generated site files and deployed
 on:
   push:
     branches:
-      - main
+      - deployed
 
 jobs:
-  update-generated-data:
-    uses: ./.github/workflows/run-processing-scripts.yaml
-
   generate-files:
     runs-on: ubuntu-latest
-    needs: [update-generated-data]
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
