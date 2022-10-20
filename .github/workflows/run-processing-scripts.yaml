@@ -37,7 +37,10 @@ jobs:
       - name: push commit to main and deployed
         run: |
           git push origin main || echo "No changes to commit"
-          git checkout -b deployed
+          echo $(git log -n 10 --oneline)
+          # git checkout -b deployed
           git fetch origin deployed
+          git checkout deployed
           git pull
+          echo $(git log -n 10 --oneline)
           # git push -u origin deployed || echo "No changes to push to deployment"
