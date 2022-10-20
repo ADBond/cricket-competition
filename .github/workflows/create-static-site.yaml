@@ -1,5 +1,5 @@
-name: generate-site
-run-name: ${{ github.actor }} generated site files
+name: generate-site-and-deploy
+run-name: ${{ github.actor }} generated site files and deployed
 on:
   push:
     branches:
@@ -37,6 +37,6 @@ jobs:
       id-token: write
       pages: write
     steps:
-      - name: deplot to gh pages
+      - name: deploy to gh pages
         id: deployment
         uses: actions/deploy-pages@v1
