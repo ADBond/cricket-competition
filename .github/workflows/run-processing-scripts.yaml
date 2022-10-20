@@ -38,6 +38,7 @@ jobs:
         run: |
           git push origin main || echo "No changes to commit"
           # seems convoluted but having difficulties with this for some reason. maybe tired
+          echo $(git remote get-url origin)
           git fetch origin deployed
           git checkout deployed
           git pull
