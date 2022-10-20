@@ -1,9 +1,7 @@
 name: run-processing-scripts
 run-name: ${{ github.actor }} updated output files
 on:
-  push:
-    branches:
-      - main
+  [workflow_call]
 
 env:
   WRITE: true
