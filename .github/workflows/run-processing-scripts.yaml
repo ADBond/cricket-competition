@@ -36,6 +36,6 @@ jobs:
           git commit -m "Auto-generate outputs (from $LAST_COMMIT_SHA - $LAST_COMMIT_DATE)" || echo "No changes to commit"
       - name: push commit to main and deployed
         run: |
-          git fetch origin deployed
           git push origin main || echo "No changes to commit"
-          git push origin main:deployed || echo "No changes to push to deployment"
+          git checkout -b deployed
+          git push -u origin deployed || echo "No changes to push to deployment"
