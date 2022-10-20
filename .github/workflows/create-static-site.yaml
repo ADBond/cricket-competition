@@ -11,7 +11,8 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
-      id-token: write 
+      id-token: write
+      pages: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
