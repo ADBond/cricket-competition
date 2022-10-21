@@ -4,7 +4,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 3,1,ENG,England,0,0,23,0
 4,1,AUS,Australia,0,0,24,0
 5,1,AUS,Australia,0,0,24,0
-6,1,SCO,Scotland,1,2.5,4,0.625
+6,1,SCO,Scotland,1,2.7,4,0.675
 7,1,IRE,Ireland,1,5,7,0.7142857142857143
 8,1,IND,India,0,0,20,0
 9,1,NZL,New Zealand,0,0,14,0
@@ -69,10 +69,10 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 68,7,WIN,West Indies,1,2.3,9,0.25555555555555554
 69,7,PAK,Pakistan,0,0,17,0
 70,7,LKA,Sri Lanka,1,5.3,8,0.6625
-71,8,SCO,Scotland,1,2.5,4,0.625
+71,8,SCO,Scotland,1,2.7,4,0.675
 72,8,NED,Netherlands,1,5.2,3,1.7333333333333334
 73,8,NED,Netherlands,1,5.2,3,1.7333333333333334
-74,8,SCO,Scotland,1,2.5,4,0.625
+74,8,SCO,Scotland,1,2.7,4,0.675
 75,8,UAE,United Arab Emirates,1,3.2,1,3.2
 76,8,IRE,Ireland,1,5,7,0.7142857142857143
 77,8,IRE,Ireland,1,5,7,0.7142857142857143
@@ -92,7 +92,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 91,10,IRE,Ireland,1,5,7,0.7142857142857143
 92,10,IRE,Ireland,1,5,7,0.7142857142857143
 93,10,IRE,Ireland,1,5,7,0.7142857142857143
-94,10,SCO,Scotland,1,2.5,4,0.625
+94,10,SCO,Scotland,1,2.7,4,0.675
 95,10,PAK,Pakistan,0,0,17,0
 96,10,AUS,Australia,0,0,24,0
 97,10,AUS,Australia,0,0,24,0
@@ -120,7 +120,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 119,12,AUS,Australia,0,0,24,0
 120,12,LKA,Sri Lanka,1,5.3,8,0.6625
 121,13,IND,India,0,0,20,0
-122,13,ZIM,Zimbabwe,1,2,2,1
+122,13,ZIM,Zimbabwe,1,5,2,2.5
 123,13,IND,India,0,0,20,0
 124,13,NZL,New Zealand,0,0,14,0
 125,13,NZL,New Zealand,0,0,14,0
@@ -140,7 +140,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 139,14,NZL,New Zealand,0,0,14,0
 140,14,WIN,West Indies,1,2.3,9,0.25555555555555554
 141,15,BAN,Bangladesh,0,0,3,0
-142,15,ZIM,Zimbabwe,1,2,2,1
+142,15,ZIM,Zimbabwe,1,5,2,2.5
 143,15,WIN,West Indies,1,2.3,9,0.25555555555555554
 144,15,AFG,Afghanistan,0,0,5,0
 145,15,LKA,Sri Lanka,1,5.3,8,0.6625
