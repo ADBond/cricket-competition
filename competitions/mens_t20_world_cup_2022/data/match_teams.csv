@@ -19,8 +19,8 @@ id,match_number,team,runs,wickets,overs,result
 18,9,LKA,162,6,20,win
 19,10,NAM,141,8,20,lose
 20,10,UAE,148,3,20,win
-21,11,IRE,,,,
-22,11,WIN,,,,
+21,11,IRE,150,1,17.3,win
+22,11,WIN,146,5,20,lose
 23,12,SCO,,,,
 24,12,ZIM,,,,
 25,13,AUS,,,,
