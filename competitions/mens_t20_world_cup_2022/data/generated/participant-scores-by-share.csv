@@ -5,7 +5,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 4,1,AUS,Australia,0,0,24,0
 5,1,AUS,Australia,0,0,24,0
 6,1,SCO,Scotland,1,2.5,4,0.625
-7,1,IRE,Ireland,1,2,7,0.2857142857142857
+7,1,IRE,Ireland,1,5,7,0.7142857142857143
 8,1,IND,India,0,0,20,0
 9,1,NZL,New Zealand,0,0,14,0
 10,1,RSA,South Africa,0,0,17,0
@@ -16,7 +16,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 15,2,NZL,New Zealand,0,0,14,0
 16,2,ENG,England,0,0,23,0
 17,2,AUS,Australia,0,0,24,0
-18,2,LKA,Sri Lanka,1,4.3,8,0.5375
+18,2,LKA,Sri Lanka,1,5.3,8,0.6625
 19,2,NZL,New Zealand,0,0,14,0
 20,2,RSA,South Africa,0,0,17,0
 21,3,IND,India,0,0,20,0
@@ -28,7 +28,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 27,3,PAK,Pakistan,0,0,17,0
 28,3,IND,India,0,0,20,0
 29,3,ENG,England,0,0,23,0
-30,3,LKA,Sri Lanka,1,4.3,8,0.5375
+30,3,LKA,Sri Lanka,1,5.3,8,0.6625
 31,4,ENG,England,0,0,23,0
 32,4,WIN,West Indies,1,2.3,9,0.25555555555555554
 33,4,IND,India,0,0,20,0
@@ -48,7 +48,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 47,5,RSA,South Africa,0,0,17,0
 48,5,ENG,England,0,0,23,0
 49,5,RSA,South Africa,0,0,17,0
-50,5,LKA,Sri Lanka,1,4.3,8,0.5375
+50,5,LKA,Sri Lanka,1,5.3,8,0.6625
 51,6,IND,India,0,0,20,0
 52,6,AFG,Afghanistan,0,0,5,0
 53,6,WIN,West Indies,1,2.3,9,0.25555555555555554
@@ -68,18 +68,18 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 67,7,AFG,Afghanistan,0,0,5,0
 68,7,WIN,West Indies,1,2.3,9,0.25555555555555554
 69,7,PAK,Pakistan,0,0,17,0
-70,7,LKA,Sri Lanka,1,4.3,8,0.5375
+70,7,LKA,Sri Lanka,1,5.3,8,0.6625
 71,8,SCO,Scotland,1,2.5,4,0.625
-72,8,NED,Netherlands,1,4.2,3,1.4000000000000001
-73,8,NED,Netherlands,1,4.2,3,1.4000000000000001
+72,8,NED,Netherlands,1,5.2,3,1.7333333333333334
+73,8,NED,Netherlands,1,5.2,3,1.7333333333333334
 74,8,SCO,Scotland,1,2.5,4,0.625
 75,8,UAE,United Arab Emirates,1,3.2,1,3.2
-76,8,IRE,Ireland,1,2,7,0.2857142857142857
-77,8,IRE,Ireland,1,2,7,0.2857142857142857
-78,8,IRE,Ireland,1,2,7,0.2857142857142857
+76,8,IRE,Ireland,1,5,7,0.7142857142857143
+77,8,IRE,Ireland,1,5,7,0.7142857142857143
+78,8,IRE,Ireland,1,5,7,0.7142857142857143
 79,8,"NAM",Namibia,1,2.7,3,0.9
-80,8,NED,Netherlands,1,4.2,3,1.4000000000000001
-81,9,LKA,Sri Lanka,1,4.3,8,0.5375
+80,8,NED,Netherlands,1,5.2,3,1.7333333333333334
+81,9,LKA,Sri Lanka,1,5.3,8,0.6625
 82,9,AUS,Australia,0,0,24,0
 83,9,AUS,Australia,0,0,24,0
 84,9,AUS,Australia,0,0,24,0
@@ -89,9 +89,9 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 88,9,ENG,England,0,0,23,0
 89,9,NZL,New Zealand,0,0,14,0
 90,9,PAK,Pakistan,0,0,17,0
-91,10,IRE,Ireland,1,2,7,0.2857142857142857
-92,10,IRE,Ireland,1,2,7,0.2857142857142857
-93,10,IRE,Ireland,1,2,7,0.2857142857142857
+91,10,IRE,Ireland,1,5,7,0.7142857142857143
+92,10,IRE,Ireland,1,5,7,0.7142857142857143
+93,10,IRE,Ireland,1,5,7,0.7142857142857143
 94,10,SCO,Scotland,1,2.5,4,0.625
 95,10,PAK,Pakistan,0,0,17,0
 96,10,AUS,Australia,0,0,24,0
@@ -118,7 +118,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 117,12,RSA,South Africa,0,0,17,0
 118,12,AUS,Australia,0,0,24,0
 119,12,AUS,Australia,0,0,24,0
-120,12,LKA,Sri Lanka,1,4.3,8,0.5375
+120,12,LKA,Sri Lanka,1,5.3,8,0.6625
 121,13,IND,India,0,0,20,0
 122,13,ZIM,Zimbabwe,1,2,2,1
 123,13,IND,India,0,0,20,0
@@ -143,7 +143,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 142,15,ZIM,Zimbabwe,1,2,2,1
 143,15,WIN,West Indies,1,2.3,9,0.25555555555555554
 144,15,AFG,Afghanistan,0,0,5,0
-145,15,LKA,Sri Lanka,1,4.3,8,0.5375
+145,15,LKA,Sri Lanka,1,5.3,8,0.6625
 146,15,NZL,New Zealand,0,0,14,0
 147,15,NZL,New Zealand,0,0,14,0
 148,15,AFG,Afghanistan,0,0,5,0
@@ -154,7 +154,7 @@ share_id,participant_id,team_code,display_name,matches_played,total_points,total
 153,16,RSA,South Africa,0,0,17,0
 154,16,NZL,New Zealand,0,0,14,0
 155,16,PAK,Pakistan,0,0,17,0
-156,16,LKA,Sri Lanka,1,4.3,8,0.5375
+156,16,LKA,Sri Lanka,1,5.3,8,0.6625
 157,16,ENG,England,0,0,23,0
 158,16,IND,India,0,0,20,0
 159,16,ENG,England,0,0,23,0
