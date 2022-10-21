@@ -21,8 +21,8 @@ id,match_number,team,runs,wickets,overs,result
 20,10,UAE,148,3,20,win
 21,11,IRE,150,1,17.3,win
 22,11,WIN,146,5,20,lose
-23,12,SCO,,,,
-24,12,ZIM,,,,
+23,12,SCO,132,6,20,lose
+24,12,ZIM,133,5,18.3,win
 25,13,AUS,,,,
 26,13,NZL,,,,
 27,14,ENG,,,,
