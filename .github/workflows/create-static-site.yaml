@@ -1,9 +1,7 @@
 name: generate-site-and-deploy
 run-name: ${{ github.actor }} generated site files and deployed
 on:
-  push:
-    branches:
-      - deployed
+  [workflow_call]
 
 jobs:
   generate-files:
@@ -12,6 +10,8 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10' 
