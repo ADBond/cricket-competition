@@ -39,15 +39,4 @@ jobs:
       - name: push commit to main and deployed
         run: |
           git push origin main || echo "No changes to commit"
-          git log -n 10 --oneline
-          # seems convoluted but having difficulties with this for some reason. maybe tired
-          echo $(git remote get-url origin)
-          echo $(git status)
-          git fetch origin deployed
-          git checkout deployed
-          git log -n 10 --oneline
-          git pull
-          git log -n 10 --oneline
-          echo $(git status)
-          git merge --ff-only main
-          git push origin || echo "No changes to push to deployment"
+          git push origin main:deployed || echo "No changes to push to deployment"
