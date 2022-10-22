@@ -41,4 +41,5 @@ jobs:
           git push origin main || echo "No changes to commit"
 
   deploy-site:
+    needs: [run-scripts]
     uses: ./.github/workflows/create-static-site.yaml
