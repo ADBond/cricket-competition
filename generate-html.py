@@ -1,6 +1,7 @@
 import os
 import re
 from shutil import copy
+from datetime import datetime
 
 from yaml import full_load as yaml_load
 # import yaml
@@ -97,6 +98,8 @@ def get_info(df_group_tables, team):
 STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
 SITE_DIR = "competitions-site"
+CURRENT_TIME = datetime.now().strftime("%A %d %B %Y, %H:%M:%S (%Z)")
+
 if not os.path.exists(SITE_DIR):
     os.makedirs(SITE_DIR)
 new_static_folder = os.path.join(SITE_DIR, "static")
@@ -122,6 +125,9 @@ comp_substitutions = {
         **subs_from_yaml(os.path.join(TEMPLATE_DIR, "mens_t20_world_cup_2022", "points-allocation.yaml"))
     },
 }
+sitewide_substitutions = {
+    "date_time_update": CURRENT_TIME
+}
 
 jinja_file_regex = re.compile(r'\.jinja$')
 
@@ -135,7 +141,7 @@ for file, subs in tl_substitutions.items():
     file = jinja_file_regex.sub(".html", file)
     new_full_file = os.path.join(SITE_DIR, file)
     with open(new_full_file, "w+", encoding="utf8") as f:
-        f.write(template.render(**subs))
+        f.write(template.render(**subs, **sitewide_substitutions))
 
 # TODO: maybe on team page instead of person + full list have person, num_shares
 # TODO: and similarly on person page for teams
@@ -162,7 +168,7 @@ for comp, subs in comp_substitutions.items():
     participants = df_participants.to_dict(orient="records")
 
     with open(new_full_file, "w+", encoding="utf8") as f:
-        f.write(comp_template.render(comp=comp, teams=teams, **subs))
+        f.write(comp_template.render(comp=comp, teams=teams, **subs, **sitewide_substitutions))
 
     comp_folder = os.path.join(SITE_DIR, comp)
     if not os.path.exists(comp_folder):
@@ -186,7 +192,7 @@ for comp, subs in comp_substitutions.items():
     }
 
     with open(os.path.join(SITE_DIR, comp, f"leaderboard.html"), "w+", encoding="utf8") as f:
-        f.write(lb_template.render(**lb_subs))
+        f.write(lb_template.render(**lb_subs, **sitewide_substitutions))
     
     team_template = env.get_template("team_page.jinja")
     df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
@@ -233,7 +239,8 @@ for comp, subs in comp_substitutions.items():
                 share_value = share_value,
                 team_tables = team_tables,
                 title = f"{team} - {subs['title']}",
-                comp_home = file
+                comp_home = file,
+                **sitewide_substitutions,
             ))
 
     person_template = env.get_template("person_page.jinja")
@@ -260,7 +267,8 @@ for comp, subs in comp_substitutions.items():
             f.write(person_template.render(
                 person_points_table = df_person_points.to_html(index=False, escape=False),
                 title = f"{p_name} - {subs['title']}",
-                comp_home = file
+                comp_home = file,
+                **sitewide_substitutions,
             ))
 
 for file in os.listdir(STATIC_FOLDER):
