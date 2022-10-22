@@ -6,11 +6,11 @@ NED,Netherlands,1,5.2,3,1.7333333333333334
 IRE,Ireland,1,5,7,0.7142857142857143
 SCO,Scotland,1,2.7,4,0.675
 LKA,Sri Lanka,1,5.3,8,0.6625
+NZL,New Zealand,1,4.3,14,0.3071428571428571
 WIN,West Indies,1,2.3,9,0.25555555555555554
-AFG,Afghanistan,0,0,5,0
-AUS,Australia,0,0,24,0
-ENG,England,0,0,23,0
-NZL,New Zealand,0,0,14,0
+ENG,England,1,4.8,23,0.20869565217391303
+AFG,Afghanistan,1,0.2,5,0.04
+AUS,Australia,1,0,24,0
 BAN,Bangladesh,0,0,3,0
 IND,India,0,0,20,0
 PAK,Pakistan,0,0,17,0
