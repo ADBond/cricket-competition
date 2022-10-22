@@ -23,10 +23,10 @@ id,match_number,team,runs,wickets,overs,result
 22,11,WIN,146,5,20,lose
 23,12,SCO,132,6,20,lose
 24,12,ZIM,133,5,18.3,win
-25,13,AUS,,,,
-26,13,NZL,,,,
-27,14,ENG,,,,
-28,14,AFG,,,,
+25,13,AUS,111,10,17.1,lose
+26,13,NZL,200,3,20,win
+27,14,ENG,113,5,18.1,win
+28,14,AFG,112,10,19.4,lose
 29,15,LKA,,,,
 30,15,,,,,
 31,16,IND,,,,
