@@ -13,10 +13,10 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 12,first_round,SCO,SCO,Bellerive Oval,B,21/10/22,1900
 13,super_12,AUS,NZL,SCG,1,22/10/22,1800
 14,super_12,ENG,AFG,Perth Stadium,1,22/10/22,1900
-15,super_12,,,Bellerive Oval,1,23/10/22,1500
-16,super_12,,,MCG,2,23/10/22,1900
-17,super_12,,,Bellerive Oval,2,24/10/22,1500
-18,super_12,,,Bellerive Oval,2,24/10/22,1900
+15,super_12,IRE,IRE,Bellerive Oval,1,23/10/22,1500
+16,super_12,IND,PAK,MCG,2,23/10/22,1900
+17,super_12,NED,BAN,Bellerive Oval,2,24/10/22,1500
+18,super_12,ZIM,ZIM,Bellerive Oval,2,24/10/22,1900
 19,super_12,,,Perth Stadium,1,25/10/22,1900
 20,super_12,,,MCG,1,26/10/22,1500
 21,super_12,,,MCG,1,26/10/22,1900
