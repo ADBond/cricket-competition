@@ -119,21 +119,44 @@ df_head_to_head <- df %>%
   #
   mutate(
     overs_faced_eff = overs_to_raw_balls(
-      if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+      if_else(
+        result_main == "no_result",
+        glue("0.0"),
+        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+      )
     ) %>% raw_balls_to_overs()
   ) %>%
   mutate(
     overs_bowled_eff = overs_to_raw_balls(
-      if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+      if_else(
+        result_main == "no_result",
+        glue("0.0"),
+        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+      )
     ) %>% raw_balls_to_overs()
   ) %>%
   mutate(
-    nrr = runs_main/(overs_to_raw_balls(overs_faced_eff)/6) - runs_opponent/(overs_to_raw_balls(overs_bowled_eff)/6)
+    runs_scored_eff = if_else(
+      result_main == "no_result",
+      0,
+      runs_main
+    )
+  ) %>%
+  mutate(
+    runs_conceded_eff = if_else(
+      result_main == "no_result",
+      0,
+      runs_opponent
+    )
+  ) %>%
+  mutate(
+    nrr = runs_scored_eff / (overs_to_raw_balls(overs_faced_eff) / 6) -
+      runs_conceded_eff / (overs_to_raw_balls(overs_bowled_eff) / 6)
   ) %>%
   # automatic bonuses
   mutate(bonus_close_loss = (result_main == "lose") & nrr > -1) %>%
-  mutate(bonus_bowled_out_opponent = (wickets_opponent == 10)) %>%
-  mutate(bonus_no_wickets_lost = (wickets_main == 0 & result_main != "yet_to_play"))
+  mutate(bonus_bowled_out_opponent = (wickets_opponent == 10) & (result_main != "no_result")) %>%
+  mutate(bonus_no_wickets_lost = (wickets_main == 0 & !(result_main %in% c("no_result", "yet_to_play"))))
 
 df_auto_bonus <- df_head_to_head %>%
   select(stage, multiplier, team_main, team_opponent, starts_with("bonus")) %>%
@@ -217,6 +240,7 @@ df_group_tables <- df_head_to_head %>%
     points = 2*wins + 1*ties + 1*nr,
     runs_scored = sum(runs_main),
     overs_faced = sum(overs_to_raw_balls(overs_main)) %>% raw_balls_to_overs(),
+    runs_scored_eff = sum(runs_scored_eff),
     overs_faced_eff = sum(
       overs_to_raw_balls(
         if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
@@ -224,12 +248,14 @@ df_group_tables <- df_head_to_head %>%
     ) %>% raw_balls_to_overs(),
     runs_against = sum(runs_opponent),
     overs_bowled = sum(overs_to_raw_balls(overs_opponent)) %>% raw_balls_to_overs(),
+    runs_conceded_eff = sum(runs_conceded_eff),
     overs_bowled_eff = sum(
       overs_to_raw_balls(
         if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
       )
     ) %>% raw_balls_to_overs(),
-    nrr = runs_scored/(overs_to_raw_balls(overs_faced_eff)/6) - runs_against/(overs_to_raw_balls(overs_bowled_eff)/6)
+    nrr = runs_scored_eff / (overs_to_raw_balls(overs_faced_eff) / 6) -
+      runs_conceded_eff / (overs_to_raw_balls(overs_bowled_eff) / 6)
   ) %>%
   rename(team = team_main) %>%
   arrange(desc(points), desc(nrr), .by_group = TRUE)
