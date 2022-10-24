@@ -2,16 +2,21 @@ team,event,points
 Afghanistan,lose in match vs England in super_12,0
 Afghanistan,"close_loss (vs England, in super_12)",0.2
 Australia,lose in match vs New Zealand in super_12,0
+Bangladesh,win in match vs Netherlands in super_12,4
+Bangladesh,"bowled_out_opponent (vs Netherlands, in super_12)",0.3
 England,win in match vs Afghanistan in super_12,4
 England,fifer (Sam Curran vs Afghanistan),0.5
 England,"bowled_out_opponent (vs Afghanistan, in super_12)",0.3
+India,win in match vs Pakistan in super_12,4
 Ireland,lose in match vs Zimbabwe in first_round,0
 Ireland,win in match vs Scotland in first_round,2
 Ireland,win in match vs West Indies in first_round,2
+Ireland,lose in match vs Sri Lanka in super_12,0
 Ireland,to_super_12 (After defeating West Indies),1
 Sri Lanka,lose in match vs Namibia in first_round,0
 Sri Lanka,win in match vs United Arab Emirates in first_round,2
 Sri Lanka,win in match vs Netherlands in first_round,2
+Sri Lanka,win in match vs Ireland in super_12,4
 Sri Lanka,to_super_12 (After defeating Netherlands),1
 Sri Lanka,"bowled_out_opponent (vs United Arab Emirates, in first_round)",0.3
 Namibia,win in match vs Sri Lanka in first_round,2
@@ -23,10 +28,16 @@ Namibia,"close_loss (vs United Arab Emirates, in first_round)",0.2
 Netherlands,win in match vs United Arab Emirates in first_round,2
 Netherlands,win in match vs Namibia in first_round,2
 Netherlands,lose in match vs Sri Lanka in first_round,0
+Netherlands,lose in match vs Bangladesh in super_12,0
 Netherlands,to_super_12 (After UAE defeated Namibia),1
 Netherlands,"close_loss (vs Sri Lanka, in first_round)",0.2
+Netherlands,"close_loss (vs Bangladesh, in super_12)",0.2
 New Zealand,win in match vs Australia in super_12,4
 New Zealand,"bowled_out_opponent (vs Australia, in super_12)",0.3
+Pakistan,lose in match vs India in super_12,0
+Pakistan,"close_loss (vs India, in super_12)",0.2
+South Africa,no_result in match vs Zimbabwe in super_12,2
+South Africa,"no_wickets_lost (vs Zimbabwe, in super_12)",0.4
 Scotland,win in match vs West Indies in first_round,2
 Scotland,lose in match vs Ireland in first_round,0
 Scotland,lose in match vs Zimbabwe in first_round,0
@@ -45,4 +56,5 @@ West Indies,"bowled_out_opponent (vs Zimbabwe, in first_round)",0.3
 Zimbabwe,win in match vs Ireland in first_round,2
 Zimbabwe,lose in match vs West Indies in first_round,0
 Zimbabwe,win in match vs Scotland in first_round,2
+Zimbabwe,no_result in match vs South Africa in super_12,2
 Zimbabwe,to_super_12 (After defeating Scotland),1
