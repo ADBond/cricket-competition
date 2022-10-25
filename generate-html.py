@@ -200,7 +200,7 @@ for comp, subs in comp_substitutions.items():
         df_team_points = df_points[df_points["team"] == team]
         total_points = df_team_points["points"].sum()
         sum_row = pd.DataFrame(
-            [{"team": "", "event": "<strong>total</total>", "points": f"<strong>{total_points}</strong>"}]
+            [{"team": "", "event": "<strong>total</strong>", "points": f"<strong>{total_points}</strong>"}]
         )
         df_team_points = pd.concat(
             [
