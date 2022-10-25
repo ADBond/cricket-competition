@@ -1,7 +1,7 @@
 import os
 import re
 from shutil import copy
-from datetime import datetime
+from datetime import datetime, timezone
 
 from yaml import full_load as yaml_load
 # import yaml
@@ -98,7 +98,7 @@ def get_info(df_group_tables, team):
 STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
 SITE_DIR = "competitions-site"
-CURRENT_TIME = datetime.now().strftime("%A %d %B %Y, %H:%M:%S (%Z)")
+CURRENT_TIME = datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M:%S (UTC)")
 
 if not os.path.exists(SITE_DIR):
     os.makedirs(SITE_DIR)
