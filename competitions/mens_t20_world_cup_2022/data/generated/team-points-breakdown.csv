@@ -2,6 +2,7 @@ team,event,points
 Afghanistan,lose in match vs England in super_12,0
 Afghanistan,"close_loss (vs England, in super_12)",0.2
 Australia,lose in match vs New Zealand in super_12,0
+Australia,win in match vs Sri Lanka in super_12,4
 Bangladesh,win in match vs Netherlands in super_12,4
 Bangladesh,"bowled_out_opponent (vs Netherlands, in super_12)",0.3
 England,win in match vs Afghanistan in super_12,4
@@ -17,6 +18,7 @@ Sri Lanka,lose in match vs Namibia in first_round,0
 Sri Lanka,win in match vs United Arab Emirates in first_round,2
 Sri Lanka,win in match vs Netherlands in first_round,2
 Sri Lanka,win in match vs Ireland in super_12,4
+Sri Lanka,lose in match vs Australia in super_12,0
 Sri Lanka,to_super_12 (After defeating Netherlands),1
 Sri Lanka,"bowled_out_opponent (vs United Arab Emirates, in first_round)",0.3
 Namibia,win in match vs Sri Lanka in first_round,2
