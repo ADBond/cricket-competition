@@ -35,8 +35,8 @@ id,match_number,team,runs,wickets,overs,result
 34,17,NED,135,10,20,lose
 35,18,RSA,51,0,3,no_result
 36,18,ZIM,79,5,9,no_result
-37,19,AUS,,,,
-38,19,LKA,,,,
+37,19,AUS,158,3,16.3,win
+38,19,LKA,157,6,20,lose
 39,20,ENG,,,,
 40,20,IRE,,,,
 41,21,AFG,,,,
