@@ -45,6 +45,12 @@ raw_balls_to_overs <- function(x){
   balls <- x %% 6
   return(glue("{full_overs}.{balls}"))
 }
+runs_wickets_to_score <- function(r, w){
+  trailing <- if_else(as.numeric(w) == 10, glue(""), glue("/{w}"))
+  return(
+    glue("{r}{trailing}")
+  )
+}
 
 competition <- "mens_t20_world_cup_2022"
 
@@ -263,6 +269,15 @@ df_group_tables <- df_head_to_head %>%
 df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
+# results table - head to head in a more processed form
+df_results <- df_head_to_head %>%
+  filter(result_main != "yet_to_play") %>%
+  mutate(team_score = glue("{runs_wickets_to_score(runs_main, wickets_main)} ({overs_main})")) %>%
+  mutate(opp_score = glue("{runs_wickets_to_score(runs_opponent, wickets_opponent)} ({overs_opponent})")) %>%
+  # TODO: wins by X
+  # TODO: more selecting
+  select(stage, group, team_main, team_opponent)
+
 if(Sys.getenv("WRITE") != ""){
   gen_dir <- glue("./{data_dir}/generated")
   if (!dir.exists(gen_dir)) {
@@ -276,4 +291,5 @@ if(Sys.getenv("WRITE") != ""){
     select(display_name, event, points) %>%
     rename(team = display_name) %>%
     write_csv(glue("./{gen_dir}/team-points-breakdown.csv"))
+  write_csv(df_results, glue("./{gen_dir}/results.csv"))
 }
