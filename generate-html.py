@@ -163,6 +163,9 @@ for comp, subs in comp_substitutions.items():
     df_group_tables = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "group-tables.csv")).merge(
         df_teams, how="left", left_on="team", right_on="code"
     )
+    df_team_points_tot = pd.read_csv(
+        os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points.csv")
+    ).sort_values(by="display_name")
 
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     participants = df_participants.to_dict(orient="records")
@@ -186,13 +189,39 @@ for comp, subs in comp_substitutions.items():
         "person"
     )
     participant_league_table_with_links = participant_league_table_with_links[["Name", "Total points"]]
+    team_league_table_with_links = df_team_points_tot.sort_values(
+        "points_per_share", ascending=False
+    )
+    team_league_table_with_links["Team"] = enlinken(
+        team_league_table_with_links["display_name"],
+        team_league_table_with_links["team"],
+        "team"
+    )
+    team_league_table_with_links = team_league_table_with_links[
+        ["Team", "matches_played", "total_points", "total_shares", "points_per_share"]
+    ]
+    team_league_table_with_links = team_league_table_with_links.rename(
+        columns={
+            "matches_played": "Matches played",
+            "total_points": "Total points",
+            "total_shares": "Total shares",
+            "points_per_share": "Points/share",
+        }
+    )
     lb_subs = {
         "title": f"Leaderboard - {subs['title']}",
         "participant_league_table_with_links": participant_league_table_with_links.to_html(index=False, escape=False)
     }
+    lb_team_subs = {
+        "title": f"Team Leaderboard - {subs['title']}",
+        "participant_league_table_with_links": team_league_table_with_links.to_html(index=False, escape=False)
+    }
 
     with open(os.path.join(SITE_DIR, comp, f"leaderboard.html"), "w+", encoding="utf8") as f:
         f.write(lb_template.render(**lb_subs, **sitewide_substitutions))
+        
+    with open(os.path.join(SITE_DIR, comp, f"team-leaderboard.html"), "w+", encoding="utf8") as f:
+        f.write(lb_template.render(**lb_team_subs, **sitewide_substitutions))
     
     team_template = env.get_template("team_page.jinja")
     df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
