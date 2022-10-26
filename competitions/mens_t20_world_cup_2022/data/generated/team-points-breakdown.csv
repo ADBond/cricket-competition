@@ -6,13 +6,17 @@ Australia,win in match vs Sri Lanka in super_12,4
 Bangladesh,win in match vs Netherlands in super_12,4
 Bangladesh,"bowled_out_opponent (vs Netherlands, in super_12)",0.3
 England,win in match vs Afghanistan in super_12,4
+England,lose in match vs Ireland in super_12,0
 England,fifer (Sam Curran vs Afghanistan),0.5
 England,"bowled_out_opponent (vs Afghanistan, in super_12)",0.3
+England,"close_loss (vs Ireland, in super_12)",0.2
+England,"bowled_out_opponent (vs Ireland, in super_12)",0.3
 India,win in match vs Pakistan in super_12,4
 Ireland,lose in match vs Zimbabwe in first_round,0
 Ireland,win in match vs Scotland in first_round,2
 Ireland,win in match vs West Indies in first_round,2
 Ireland,lose in match vs Sri Lanka in super_12,0
+Ireland,win in match vs England in super_12,4
 Ireland,to_super_12 (After defeating West Indies),1
 Sri Lanka,lose in match vs Namibia in first_round,0
 Sri Lanka,win in match vs United Arab Emirates in first_round,2
