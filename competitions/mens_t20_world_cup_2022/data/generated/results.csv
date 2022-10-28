@@ -37,3 +37,17 @@ super_12,2,RSA,ZIM,no_result,51/0 (3),79/5 (9),
 super_12,2,ZIM,RSA,no_result,79/5 (9),51/0 (3),
 super_12,1,AUS,LKA,win,158/3 (16.3),157/6 (20),by 7 wickets (with 3.3 overs left)
 super_12,1,LKA,AUS,lose,157/6 (20),158/3 (16.3),by 7 wickets (with 3.3 overs left)
+super_12,1,ENG,IRE,lose,105/5 (14.3),157 (19.2),by 52 runs
+super_12,1,IRE,ENG,win,157 (19.2),105/5 (14.3),by 52 runs
+super_12,1,AFG,NZL,no_result,0/0 (0),0/0 (0),NA
+super_12,1,NZL,AFG,no_result,0/0 (0),0/0 (0),NA
+super_12,2,BAN,RSA,lose,101 (16.3),205/5 (20),by 104 runs
+super_12,2,RSA,BAN,win,205/5 (20),101 (16.3),by 104 runs
+super_12,2,IND,NED,win,179/2 (20),123/9 (20),by 56 runs
+super_12,2,NED,IND,lose,123/9 (20),179/2 (20),by 56 runs
+super_12,2,PAK,ZIM,lose,129/8 (20),130/8 (20),by 1 runs
+super_12,2,ZIM,PAK,win,130/8 (20),129/8 (20),by 1 runs
+super_12,1,AFG,IRE,no_result,0/0 (0),0/0 (0),NA
+super_12,1,IRE,AFG,no_result,0/0 (0),0/0 (0),NA
+super_12,1,AUS,ENG,no_result,0/0 (0),0/0 (0),NA
+super_12,1,ENG,AUS,no_result,0/0 (0),0/0 (0),NA
