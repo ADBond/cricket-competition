@@ -95,6 +95,23 @@ def get_info(df_group_tables, team):
         "table": gp_tab.to_html(index=False)
     }
 
+
+def to_verb(result):
+    return {
+        "lose": "lost to",
+        "win": "beat",
+        "tie": "tied with",
+        "no_result": "had no result against"
+    }[result]
+
+
+def get_results_text(df_row):
+    return (
+        f"In {df_row['stage']}, group {df_row['group']}, "
+        f"{df_row['team_main']} {df_row['team_score']} vs {df_row['team_opponent']} {df_row['opp_score']}.  "
+        f"{df_row['team_main']} {to_verb(df_row['result_main'])} {df_row['team_opponent']} {df_row['win_lose_by']}"
+    )
+
 STATIC_FOLDER = "site-static-files"
 TEMPLATE_DIR = "competitions"
 SITE_DIR = "competitions-site"
@@ -145,7 +162,6 @@ for file, subs in tl_substitutions.items():
 
 # TODO: maybe on team page instead of person + full list have person, num_shares
 # TODO: and similarly on person page for teams
-# TODO: results on team page even??
 for comp, subs in comp_substitutions.items():
     comp_template = env.get_template("competition_home.jinja")
     lb_template = env.get_template("leaderboard.jinja")
@@ -158,13 +174,17 @@ for comp, subs in comp_substitutions.items():
     )
     df_people_points_tot = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores.csv"))
     df_people_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "participant-scores-by-share.csv"))
-    
+
     df_group_tables = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "group-tables.csv")).merge(
         df_teams, how="left", left_on="team", right_on="code"
     )
     df_team_points_tot = pd.read_csv(
         os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points.csv")
     ).sort_values(by="display_name")
+    df_results = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "results.csv"))
+    # .merge(
+    #     df_teams, how="left", left_on="team", right_on="code"
+    # )
 
     teams = dict(zip(df_teams["code"], df_teams["display_name"]))
     participants = df_participants.to_dict(orient="records")
@@ -226,6 +246,9 @@ for comp, subs in comp_substitutions.items():
     df_points = pd.read_csv(os.path.join(TEMPLATE_DIR, comp, "data", "generated", "team-points-breakdown.csv"))
     for code, team in teams.items():
         df_team_points = df_points[df_points["team"] == team]
+        df_team_results = df_results[df_results["team_main"] == code]
+        results_list = list(map(get_results_text, df_team_results.to_dict('records')))
+        df_team_results = pd.DataFrame({"result": results_list})
         total_points = df_team_points["points"].sum()
         sum_row = pd.DataFrame(
             [{"team": "", "event": "<strong>total</strong>", "points": f"<strong>{total_points}</strong>"}]
@@ -258,10 +281,12 @@ for comp, subs in comp_substitutions.items():
             for stage in stages if (info := get_info(df_group_tables[df_group_tables["stage"] == stage], team)) is not None
         }
 
+        # TODO: team results should be listed rather than tabular, probably
         with open(team_file, "w+", encoding="utf8") as f:
             f.write(team_template.render(
                 team_points_table = df_team_points.to_html(index=False, escape=False),
                 team_shares_table = df_team_shares.to_html(index=False, escape=False),
+                team_results_table = df_team_results.to_html(index=False, escape=False),
                 total = total_points,
                 total_shares = total_shares,
                 share_value = share_value,

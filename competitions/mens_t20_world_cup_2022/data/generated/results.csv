@@ -1,0 +1,39 @@
+stage,group,team_main,team_opponent,result_main,team_score,opp_score,win_lose_by
+first_round,A,LKA,"NAM",lose,108 (19),163/7 (20),by 55 runs
+first_round,A,"NAM",LKA,win,163/7 (20),108 (19),by 55 runs
+first_round,A,UAE,NED,lose,111/8 (20),112/7 (19.5),by 3 wickets (with 0.1 overs left)
+first_round,A,NED,UAE,win,112/7 (19.5),111/8 (20),by 3 wickets (with 0.1 overs left)
+first_round,B,WIN,SCO,lose,118 (18.3),160/5 (20),by 42 runs
+first_round,B,SCO,WIN,win,160/5 (20),118 (18.3),by 42 runs
+first_round,B,ZIM,IRE,win,174/7 (20),143/9 (20),by 31 runs
+first_round,B,IRE,ZIM,lose,143/9 (20),174/7 (20),by 31 runs
+first_round,A,"NAM",NED,lose,121/6 (20),122/5 (19.3),by 5 wickets (with 0.3 overs left)
+first_round,A,NED,"NAM",win,122/5 (19.3),121/6 (20),by 5 wickets (with 0.3 overs left)
+first_round,A,LKA,UAE,win,152/8 (20),73 (17.1),by 79 runs
+first_round,A,UAE,LKA,lose,73 (17.1),152/8 (20),by 79 runs
+first_round,B,SCO,IRE,lose,176/5 (20),180/4 (19),by 6 wickets (with 1.0 overs left)
+first_round,B,IRE,SCO,win,180/4 (19),176/5 (20),by 6 wickets (with 1.0 overs left)
+first_round,B,WIN,ZIM,win,153/7 (20),122 (18.2),by 31 runs
+first_round,B,ZIM,WIN,lose,122 (18.2),153/7 (20),by 31 runs
+first_round,A,NED,LKA,lose,146/9 (20),162/6 (20),by 16 runs
+first_round,A,LKA,NED,win,162/6 (20),146/9 (20),by 16 runs
+first_round,A,"NAM",UAE,lose,141/8 (20),148/3 (20),by 7 runs
+first_round,A,UAE,"NAM",win,148/3 (20),141/8 (20),by 7 runs
+first_round,B,IRE,WIN,win,150/1 (17.3),146/5 (20),by 9 wickets (with 2.3 overs left)
+first_round,B,WIN,IRE,lose,146/5 (20),150/1 (17.3),by 9 wickets (with 2.3 overs left)
+first_round,B,SCO,ZIM,lose,132/6 (20),133/5 (18.3),by 5 wickets (with 1.3 overs left)
+first_round,B,ZIM,SCO,win,133/5 (18.3),132/6 (20),by 5 wickets (with 1.3 overs left)
+super_12,1,AUS,NZL,lose,111 (17.1),200/3 (20),by 89 runs
+super_12,1,NZL,AUS,win,200/3 (20),111 (17.1),by 89 runs
+super_12,1,ENG,AFG,win,113/5 (18.1),112 (19.4),by 5 wickets (with 1.5 overs left)
+super_12,1,AFG,ENG,lose,112 (19.4),113/5 (18.1),by 5 wickets (with 1.5 overs left)
+super_12,1,LKA,IRE,win,133/1 (15),128/8 (20),by 9 wickets (with 5.0 overs left)
+super_12,1,IRE,LKA,lose,128/8 (20),133/1 (15),by 9 wickets (with 5.0 overs left)
+super_12,2,IND,PAK,win,160/6 (20),159/8 (20),by 4 wickets (with 0.0 overs left)
+super_12,2,PAK,IND,lose,159/8 (20),160/6 (20),by 4 wickets (with 0.0 overs left)
+super_12,2,BAN,NED,win,144/8 (20),135 (20),by 9 runs
+super_12,2,NED,BAN,lose,135 (20),144/8 (20),by 9 runs
+super_12,2,RSA,ZIM,no_result,51/0 (3),79/5 (9),
+super_12,2,ZIM,RSA,no_result,79/5 (9),51/0 (3),
+super_12,1,AUS,LKA,win,158/3 (16.3),157/6 (20),by 7 wickets (with 3.3 overs left)
+super_12,1,LKA,AUS,lose,157/6 (20),158/3 (16.3),by 7 wickets (with 3.3 overs left)
