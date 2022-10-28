@@ -9,7 +9,6 @@
 * round numbers
 * shorten tables as per note in script
 * links in group tables
-* all comps in CI
 * teams marked as out
 * margin logic for DLS
 * NRR stuff needs checking for DLS
@@ -26,6 +25,9 @@
 
 * Consistency checking?
 * Timezone converting/some logicking around this? maybe data-entry level
+* all comps in CI
+* build site only if relevant changes?
+    * include commit hash for reference (and commit time - more useful info)
 
 ## Data
 
