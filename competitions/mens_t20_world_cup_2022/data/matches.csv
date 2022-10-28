@@ -19,12 +19,12 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 18,super_12,ZIM,ZIM,Bellerive Oval,2,24/10/22,1900
 19,super_12,AUS,LKA,Perth Stadium,1,25/10/22,1900
 20,super_12,ENG,IRE,MCG,1,26/10/22,1500
-21,super_12,,,MCG,1,26/10/22,1900
-22,super_12,,,SCG,2,27/10/22,1400
-23,super_12,,,SCG,2,27/10/22,1800
-24,super_12,,,Perth Stadium,2,27/10/22,1900
-25,super_12,,,MCG,1,28/10/22,1500
-26,super_12,,,MCG,1,28/10/22,1900
+21,super_12,NA,NA,MCG,1,26/10/22,1900
+22,super_12,RSA,RSA,SCG,2,27/10/22,1400
+23,super_12,IND,IND,SCG,2,27/10/22,1800
+24,super_12,ZIM,ZIM,Perth Stadium,2,27/10/22,1900
+25,super_12,NA,NA,MCG,1,28/10/22,1500
+26,super_12,NA,NA,MCG,1,28/10/22,1900
 27,super_12,,,SCG,1,29/10/22,1900
 28,super_12,,,The Gabba,2,30/10/22,1300
 29,super_12,,,Perth Stadium,2,30/10/22,1500
