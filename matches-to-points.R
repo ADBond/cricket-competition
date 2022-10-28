@@ -45,6 +45,17 @@ raw_balls_to_overs <- function(x){
   balls <- x %% 6
   return(glue("{full_overs}.{balls}"))
 }
+runs_wickets_to_score <- function(r, w){
+  trailing <- if_else(as.numeric(w) == 10, glue(""), glue("/{w}"))
+  return(
+    glue("{r}{trailing}")
+  )
+}
+over_subtract <- function(o1, o2){
+  # o1 - o2, in over format
+  (overs_to_raw_balls(o1) - overs_to_raw_balls(o2)) %>%
+    raw_balls_to_overs()
+}
 
 competition <- "mens_t20_world_cup_2022"
 
@@ -106,8 +117,8 @@ df
 
 # table showing opponent information by match
 df_head_to_head <- df %>%
-  select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points) %>%
-  self_join(team, by=c("match_number", "stage", "group", "multiplier"), suffix=c("_main", "_opponent")) %>%
+  select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points, team_batting_first) %>%
+  self_join(team, by=c("match_number", "stage", "group", "multiplier", "team_batting_first"), suffix=c("_main", "_opponent")) %>%
   filter(team_main != team_opponent) %>%
   # replacing missing
   mutate(runs_main = tidyr::replace_na(runs_main, 0)) %>%
@@ -263,6 +274,55 @@ df_group_tables <- df_head_to_head %>%
 df_group_tables %>%
   select(stage, group, team, matches, wins, losses, nr, points, nrr)
 
+# results table - head to head in a more processed form
+df_results <- df_head_to_head %>%
+  filter(result_main != "yet_to_play") %>%
+  mutate(team_score = glue("{runs_wickets_to_score(runs_main, wickets_main)} ({overs_main})")) %>%
+  mutate(opp_score = glue("{runs_wickets_to_score(runs_opponent, wickets_opponent)} ({overs_opponent})")) %>%
+  # tmp cols - incorrect values for tie/nr but we don't care
+  mutate(overs_win = if_else(result_main == "win", overs_main, overs_opponent)) %>%
+  mutate(wickets_win = if_else(result_main == "win", wickets_main, wickets_opponent)) %>%
+  mutate(
+    team_win = if_else(
+      result_main == "win",
+      team_main,
+      if_else(
+        result_opponent == "win",
+        team_opponent,
+        ""
+      )
+    )
+  ) %>%
+  mutate(
+    team_lose = if_else(
+      result_main == "lose",
+      team_main,
+      if_else(
+        result_opponent == "lose",
+        team_opponent,
+        ""
+      )
+    )
+  ) %>%
+  mutate(wickets_win = if_else(result_main == "win", wickets_main, wickets_opponent)) %>%
+  mutate(
+    win_lose_by = if_else(
+      # team batting first (tbf) wins
+      (team_batting_first == team_win),
+      # tbf win desc,
+      glue("by {abs(runs_main - runs_opponent)} runs"),
+      if_else(
+        # tbf loses,
+        (team_batting_first == team_lose),
+        # tbf lose outcome
+        glue("by {10 - wickets_win} wickets (with {over_subtract('20.0', overs_win)} overs left)"),
+        # tie/no-result
+        glue("")
+      )
+    )
+  ) %>%
+  select(stage, group, team_main, team_opponent, result_main, team_score, opp_score, win_lose_by)
+
 if(Sys.getenv("WRITE") != ""){
   gen_dir <- glue("./{data_dir}/generated")
   if (!dir.exists(gen_dir)) {
@@ -276,4 +336,5 @@ if(Sys.getenv("WRITE") != ""){
     select(display_name, event, points) %>%
     rename(team = display_name) %>%
     write_csv(glue("./{gen_dir}/team-points-breakdown.csv"))
+  write_csv(df_results, glue("./{gen_dir}/results.csv"))
 }

@@ -10,10 +10,15 @@
 </ul>
 </div>
 <div id="group-tables">
+Group stage(s) table(s)
 {% for stage, info in team_tables.items() %}
 Table - group {{ info["table_ind"] }} (tournament stage {{ stage }} )
 <div>{{ info["table"] }}</div>
 {% endfor %}
+</div>
+<div>
+Results:
+{{ team_results_table }}
 </div>
 Shares:
 <div id="team-shares">
