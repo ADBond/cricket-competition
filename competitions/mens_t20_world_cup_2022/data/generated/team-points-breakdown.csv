@@ -30,6 +30,7 @@ Sri Lanka,win in match vs United Arab Emirates in first_round,2
 Sri Lanka,win in match vs Netherlands in first_round,2
 Sri Lanka,win in match vs Ireland in super_12,4
 Sri Lanka,lose in match vs Australia in super_12,0
+Sri Lanka,lose in match vs New Zealand in super_12,0
 Sri Lanka,to_super_12 (After defeating Netherlands),1
 Sri Lanka,"bowled_out_opponent (vs United Arab Emirates, in first_round)",0.3
 Namibia,win in match vs Sri Lanka in first_round,2
@@ -48,7 +49,10 @@ Netherlands,"close_loss (vs Sri Lanka, in first_round)",0.2
 Netherlands,"close_loss (vs Bangladesh, in super_12)",0.2
 New Zealand,win in match vs Australia in super_12,4
 New Zealand,no_result in match vs Afghanistan in super_12,2
+New Zealand,win in match vs Sri Lanka in super_12,4
+New Zealand,century (Glenn Phillips vs Sri Lanka),0.5
 New Zealand,"bowled_out_opponent (vs Australia, in super_12)",0.3
+New Zealand,"bowled_out_opponent (vs Sri Lanka, in super_12)",0.3
 Pakistan,lose in match vs India in super_12,0
 Pakistan,lose in match vs Zimbabwe in super_12,0
 Pakistan,"close_loss (vs India, in super_12)",0.2

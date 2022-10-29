@@ -51,3 +51,5 @@ super_12,1,AFG,IRE,no_result,0/0 (0),0/0 (0),NA
 super_12,1,IRE,AFG,no_result,0/0 (0),0/0 (0),NA
 super_12,1,AUS,ENG,no_result,0/0 (0),0/0 (0),NA
 super_12,1,ENG,AUS,no_result,0/0 (0),0/0 (0),NA
+super_12,1,NZL,LKA,win,167/7 (20),102 (19.2),by 65 runs
+super_12,1,LKA,NZL,lose,102 (19.2),167/7 (20),by 65 runs
