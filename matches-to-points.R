@@ -154,7 +154,16 @@ df_head_to_head <- df %>%
       if_else(
         result_main == "no_result",
         glue("0.0"),
-        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+        if_else(
+          (dls_status == "abandoned") & !is.na(dls_par_score_opponent),
+          # TODO: does this change if team is bowled out?
+          glue("{overs_opponent}"),
+          if_else(
+            (dls_status == "interrupted") & !is.na(dls_par_score_opponent),
+            glue("{dls_overs_opponent}"),
+            if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+          )
+        )
       )
     ) %>% raw_balls_to_overs()
   ) %>%
@@ -163,7 +172,15 @@ df_head_to_head <- df %>%
       if_else(
         result_main == "no_result",
         glue("0.0"),
-        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+        if_else(
+          (dls_status == "abandoned") & !is.na(dls_par_score_main),
+          glue("{overs_main}"),
+          if_else(
+            (dls_status == "interrupted") & !is.na(dls_par_score_main),
+            glue("{dls_overs_main}"),
+            if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+          )
+        )
       )
     ) %>% raw_balls_to_overs()
   ) %>%
