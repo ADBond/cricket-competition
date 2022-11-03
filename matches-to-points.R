@@ -99,11 +99,7 @@ df_participant_shares %>%
   )
 
 # TODO:
-# can catch some input errors by checking toss/batting details match with something from scores
-# can also check that scores are consistent with result
-# ~~also compute group tables as a cross-check~~
-# TODO:
-# duckworth-lewis-stern. Maybe only if needs be/low-priority
+# duckworth-lewis-stern - check logic
 
 df <- df_matches %>%
   right_join(df_match_teams, by="match_number") %>%
@@ -115,10 +111,21 @@ df <- df_matches %>%
 
 df
 
+# TODO: man this code is ugly.
+
 # table showing opponent information by match
 df_head_to_head <- df %>%
-  select(match_number, stage, multiplier, group, team, runs, wickets, overs, result, team_points, team_batting_first) %>%
-  self_join(team, by=c("match_number", "stage", "group", "multiplier", "team_batting_first"), suffix=c("_main", "_opponent")) %>%
+  select(
+    match_number, stage, multiplier, group, team,
+    runs, wickets, overs, result,
+    team_points, team_batting_first,
+    dls_par_score, dls_overs,
+  ) %>%
+  self_join(
+    team,
+    by=c("match_number", "stage", "group", "multiplier", "team_batting_first"),
+    suffix=c("_main", "_opponent")
+  ) %>%
   filter(team_main != team_opponent) %>%
   # replacing missing
   mutate(runs_main = tidyr::replace_na(runs_main, 0)) %>%
@@ -127,13 +134,36 @@ df_head_to_head <- df %>%
   mutate(runs_opponent = tidyr::replace_na(runs_opponent, 0)) %>%
   mutate(wickets_opponent = tidyr::replace_na(wickets_opponent, 0)) %>%
   mutate(overs_opponent = tidyr::replace_na(overs_opponent, 0)) %>%
+  # dls
+  mutate(
+    dls_status =
+      if_else(
+        (!is.na(dls_par_score_main) | !is.na(dls_par_score_opponent)) &
+          (is.na(dls_overs_main) & is.na(dls_overs_opponent)),
+        "abandoned",
+        if_else(
+          (!is.na(dls_par_score_main) | !is.na(dls_par_score_opponent)),
+          "interrupted",
+          "none"
+        )
+      )
+  ) %>%
   #
   mutate(
     overs_faced_eff = overs_to_raw_balls(
       if_else(
         result_main == "no_result",
         glue("0.0"),
-        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+        if_else(
+          (dls_status == "abandoned") & !is.na(dls_par_score_opponent),
+          # TODO: does this change if team is bowled out?
+          glue("{overs_opponent}"),
+          if_else(
+            (dls_status == "interrupted") & !is.na(dls_par_score_opponent),
+            glue("{dls_overs_opponent}"),
+            if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+          )
+        )
       )
     ) %>% raw_balls_to_overs()
   ) %>%
@@ -142,7 +172,15 @@ df_head_to_head <- df %>%
       if_else(
         result_main == "no_result",
         glue("0.0"),
-        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+        if_else(
+          (dls_status == "abandoned") & !is.na(dls_par_score_main),
+          glue("{overs_main}"),
+          if_else(
+            (dls_status == "interrupted") & !is.na(dls_par_score_main),
+            glue("{dls_overs_main}"),
+            if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+          )
+        )
       )
     ) %>% raw_balls_to_overs()
   ) %>%
@@ -150,14 +188,30 @@ df_head_to_head <- df %>%
     runs_scored_eff = if_else(
       result_main == "no_result",
       0,
-      runs_main
+      if_else(
+        (dls_status == "abandoned") & !is.na(dls_par_score_opponent),
+        dls_par_score_opponent,
+        if_else(
+          (dls_status == "interrupted") & !is.na(dls_par_score_opponent),
+          dls_par_score_opponent - 1,
+          runs_main
+        )
+      )
     )
   ) %>%
   mutate(
     runs_conceded_eff = if_else(
       result_main == "no_result",
       0,
-      runs_opponent
+      if_else(
+        (dls_status == "abandoned") & !is.na(dls_par_score_main),
+        dls_par_score_main,
+        if_else(
+          (dls_status == "interrupted") & !is.na(dls_par_score_main),
+          dls_par_score_main - 1,
+          runs_opponent
+        )
+      )
     )
   ) %>%
   mutate(
@@ -254,7 +308,7 @@ df_group_tables <- df_head_to_head %>%
     runs_scored_eff = sum(runs_scored_eff),
     overs_faced_eff = sum(
       overs_to_raw_balls(
-        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+        overs_faced_eff
       )
     ) %>% raw_balls_to_overs(),
     runs_against = sum(runs_opponent),
@@ -262,7 +316,7 @@ df_group_tables <- df_head_to_head %>%
     runs_conceded_eff = sum(runs_conceded_eff),
     overs_bowled_eff = sum(
       overs_to_raw_balls(
-        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+        overs_bowled_eff
       )
     ) %>% raw_balls_to_overs(),
     nrr = runs_scored_eff / (overs_to_raw_balls(overs_faced_eff) / 6) -
