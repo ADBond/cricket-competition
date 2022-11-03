@@ -3,6 +3,10 @@ library(glue)
 library(dplyr)
 library(readr)
 
+# TODO:
+# can catch some input errors by checking toss/batting details match with something from scores
+# can also check that scores are consistent with result
+
 competition <- "mens_t20_world_cup_2022"
 
 project_dir <- glue("competitions/{competition}/")

@@ -1,4 +1,4 @@
-id,match_number,team,runs,wickets,overs,result,dl_par,dl_overs
+id,match_number,team,runs,wickets,overs,result,dls_par_score,dls_overs
 1,1,LKA,108,10,19,lose,,
 2,1,NAM,163,7,20,win,,
 3,2,UAE,111,8,20,lose,,
