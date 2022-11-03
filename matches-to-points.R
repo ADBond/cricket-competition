@@ -171,14 +171,30 @@ df_head_to_head <- df %>%
     runs_scored_eff = if_else(
       result_main == "no_result",
       0,
-      runs_main
+      if_else(
+        (dls_status == "abandoned") & !is.na(dls_par_score_opponent),
+        dls_par_score_opponent,
+        if_else(
+          (dls_status == "interrupted") & !is.na(dls_par_score_opponent),
+          dls_par_score_opponent - 1,
+          runs_main
+        )
+      )
     )
   ) %>%
   mutate(
     runs_conceded_eff = if_else(
       result_main == "no_result",
       0,
-      runs_opponent
+      if_else(
+        (dls_status == "abandoned") & !is.na(dls_par_score_main),
+        dls_par_score_main,
+        if_else(
+          (dls_status == "interrupted") & !is.na(dls_par_score_main),
+          dls_par_score_main - 1,
+          runs_opponent
+        )
+      )
     )
   ) %>%
   mutate(
