@@ -308,7 +308,7 @@ df_group_tables <- df_head_to_head %>%
     runs_scored_eff = sum(runs_scored_eff),
     overs_faced_eff = sum(
       overs_to_raw_balls(
-        if_else(wickets_main == 10, glue("20.0"), glue("{overs_main}"))
+        overs_faced_eff
       )
     ) %>% raw_balls_to_overs(),
     runs_against = sum(runs_opponent),
@@ -316,7 +316,7 @@ df_group_tables <- df_head_to_head %>%
     runs_conceded_eff = sum(runs_conceded_eff),
     overs_bowled_eff = sum(
       overs_to_raw_balls(
-        if_else(wickets_opponent == 10, glue("20.0"), glue("{overs_opponent}"))
+        overs_bowled_eff
       )
     ) %>% raw_balls_to_overs(),
     nrr = runs_scored_eff / (overs_to_raw_balls(overs_faced_eff) / 6) -
