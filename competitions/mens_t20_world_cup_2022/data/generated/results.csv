@@ -71,3 +71,9 @@ super_12,2,BAN,IND,lose,145/6 (16),184/6 (20),by 39 runs
 super_12,2,IND,BAN,win,184/6 (20),145/6 (16),by 39 runs
 super_12,2,PAK,RSA,win,185/9 (20),108/9 (14),by 77 runs
 super_12,2,RSA,PAK,lose,108/9 (14),185/9 (20),by 77 runs
+super_12,1,NZL,IRE,win,185/6 (20),150/9 (20),by 35 runs
+super_12,1,IRE,NZL,lose,150/9 (20),185/6 (20),by 35 runs
+super_12,1,AFG,AUS,lose,164/7 (20),168/8 (20),by 4 runs
+super_12,1,AUS,AFG,win,168/8 (20),164/7 (20),by 4 runs
+super_12,1,ENG,LKA,win,144/6 (19.4),141/8 (20),by 3 runs
+super_12,1,LKA,ENG,lose,141/8 (20),144/6 (19.4),by 3 runs

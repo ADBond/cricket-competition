@@ -3,12 +3,15 @@ Afghanistan,lose in match vs England in super_12,0
 Afghanistan,no_result in match vs New Zealand in super_12,2
 Afghanistan,no_result in match vs Ireland in super_12,2
 Afghanistan,lose in match vs Sri Lanka in super_12,0
+Afghanistan,lose in match vs Australia in super_12,0
 Afghanistan,"close_loss (vs England, in super_12)",0.2
 Afghanistan,"close_loss (vs Sri Lanka, in super_12)",0.2
+Afghanistan,"close_loss (vs Australia, in super_12)",0.2
 Australia,lose in match vs New Zealand in super_12,0
 Australia,win in match vs Sri Lanka in super_12,4
 Australia,no_result in match vs England in super_12,2
 Australia,win in match vs Ireland in super_12,4
+Australia,win in match vs Afghanistan in super_12,4
 Australia,"bowled_out_opponent (vs Ireland, in super_12)",0.3
 Bangladesh,win in match vs Netherlands in super_12,4
 Bangladesh,lose in match vs South Africa in super_12,0
@@ -20,7 +23,9 @@ England,win in match vs Afghanistan in super_12,4
 England,lose in match vs Ireland in super_12,0
 England,no_result in match vs Australia in super_12,2
 England,win in match vs New Zealand in super_12,4
+England,win in match vs Sri Lanka in super_12,4
 England,fifer (Sam Curran vs Afghanistan),0.5
+England,to_knockouts (After defeating Sri Lanka),2
 England,"bowled_out_opponent (vs Afghanistan, in super_12)",0.3
 England,"close_loss (vs Ireland, in super_12)",0.2
 England,"bowled_out_opponent (vs Ireland, in super_12)",0.3
@@ -36,7 +41,9 @@ Ireland,lose in match vs Sri Lanka in super_12,0
 Ireland,win in match vs England in super_12,4
 Ireland,no_result in match vs Afghanistan in super_12,2
 Ireland,lose in match vs Australia in super_12,0
+Ireland,lose in match vs New Zealand in super_12,0
 Ireland,to_super_12 (After defeating West Indies),1
+Ireland,hat_trick (Josh Little vs New Zealand),1
 Sri Lanka,lose in match vs Namibia in first_round,0
 Sri Lanka,win in match vs United Arab Emirates in first_round,2
 Sri Lanka,win in match vs Netherlands in first_round,2
@@ -44,8 +51,10 @@ Sri Lanka,win in match vs Ireland in super_12,4
 Sri Lanka,lose in match vs Australia in super_12,0
 Sri Lanka,lose in match vs New Zealand in super_12,0
 Sri Lanka,win in match vs Afghanistan in super_12,4
+Sri Lanka,lose in match vs England in super_12,0
 Sri Lanka,to_super_12 (After defeating Netherlands),1
 Sri Lanka,"bowled_out_opponent (vs United Arab Emirates, in first_round)",0.3
+Sri Lanka,"close_loss (vs England, in super_12)",0.2
 Namibia,win in match vs Sri Lanka in first_round,2
 Namibia,lose in match vs Netherlands in first_round,0
 Namibia,lose in match vs United Arab Emirates in first_round,0
@@ -67,7 +76,9 @@ New Zealand,win in match vs Australia in super_12,4
 New Zealand,no_result in match vs Afghanistan in super_12,2
 New Zealand,win in match vs Sri Lanka in super_12,4
 New Zealand,lose in match vs England in super_12,0
+New Zealand,win in match vs Ireland in super_12,4
 New Zealand,century (Glenn Phillips vs Sri Lanka),0.5
+New Zealand,"to_knockouts (During Australia vs Afghanistan, once Australia could not surpass NZL on NRR)",2
 New Zealand,"bowled_out_opponent (vs Australia, in super_12)",0.3
 New Zealand,"bowled_out_opponent (vs Sri Lanka, in super_12)",0.3
 New Zealand,"close_loss (vs England, in super_12)",0.2
