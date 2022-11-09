@@ -38,9 +38,9 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 37,super_12,IRE,NZL,Adelaide Oval,1,04/11/22,1430
 38,super_12,AFG,AUS,Adelaide Oval,1,04/11/22,1830
 39,super_12,LKA,ENG,SCG,1,05/11/22,1900
-40,super_12,,,Adelaide Oval,2,06/11/22,1030
-41,super_12,,,Adelaide Oval,2,06/11/22,1430
-42,super_12,,,MCG,2,06/11/22,1900
-43,semi_finals,,,SCG,,09/11/22,1900
+40,super_12,RSA,NED,Adelaide Oval,2,06/11/22,1030
+41,super_12,BAN,BAN,Adelaide Oval,2,06/11/22,1430
+42,super_12,IND,IND,MCG,2,06/11/22,1900
+43,semi_finals,NZL,NZL,SCG,,09/11/22,1900
 44,semi_finals,,,Adelaide Oval,,10/11/22,1830
 45,final,,,MCG,,13/11/22,1900
