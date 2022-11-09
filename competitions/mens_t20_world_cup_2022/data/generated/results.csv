@@ -77,3 +77,11 @@ super_12,1,AFG,AUS,lose,164/7 (20),168/8 (20),by 4 runs
 super_12,1,AUS,AFG,win,168/8 (20),164/7 (20),by 4 runs
 super_12,1,ENG,LKA,win,144/6 (19.4),141/8 (20),by 3 runs
 super_12,1,LKA,ENG,lose,141/8 (20),144/6 (19.4),by 3 runs
+super_12,2,RSA,NED,lose,145/8 (20),158/4 (20),by 13 runs
+super_12,2,NED,RSA,win,158/4 (20),145/8 (20),by 13 runs
+super_12,2,BAN,PAK,lose,127/8 (20),128/5 (18.1),by 5 wickets (with 1.5 overs left)
+super_12,2,PAK,BAN,win,128/5 (18.1),127/8 (20),by 5 wickets (with 1.5 overs left)
+super_12,2,IND,ZIM,win,186/5 (20),115 (17.2),by 71 runs
+super_12,2,ZIM,IND,lose,115 (17.2),186/5 (20),by 71 runs
+semi_finals,NA,NZL,PAK,lose,152/4 (20),153/3 (19.1),by 7 wickets (with 0.5 overs left)
+semi_finals,NA,PAK,NZL,win,153/3 (19.1),152/4 (20),by 7 wickets (with 0.5 overs left)
