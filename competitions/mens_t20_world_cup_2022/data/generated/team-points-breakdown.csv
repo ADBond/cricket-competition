@@ -26,16 +26,19 @@ England,lose in match vs Ireland in super_12,0
 England,no_result in match vs Australia in super_12,2
 England,win in match vs New Zealand in super_12,4
 England,win in match vs Sri Lanka in super_12,4
+England,win in match vs India in semi_finals,16
 England,fifer (Sam Curran vs Afghanistan),0.5
 England,to_knockouts (After defeating Sri Lanka),2
 England,"bowled_out_opponent (vs Afghanistan, in super_12)",0.3
 England,"close_loss (vs Ireland, in super_12)",0.2
 England,"bowled_out_opponent (vs Ireland, in super_12)",0.3
+England,"no_wickets_lost (vs India, in semi_finals)",0.4
 India,win in match vs Pakistan in super_12,4
 India,win in match vs Netherlands in super_12,4
 India,lose in match vs South Africa in super_12,0
 India,win in match vs Bangladesh in super_12,4
 India,win in match vs Zimbabwe in super_12,4
+India,lose in match vs England in semi_finals,0
 India,to_knockouts (After Netherlands defeated South Africa),2
 India,"close_loss (vs South Africa, in super_12)",0.2
 India,"bowled_out_opponent (vs Zimbabwe, in super_12)",0.3
