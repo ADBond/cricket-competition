@@ -43,4 +43,4 @@ match_number,stage,toss_won_by,team_batting_first,location,group,date,time
 42,super_12,IND,IND,MCG,2,06/11/22,1900
 43,semi_finals,NZL,NZL,SCG,,09/11/22,1900
 44,semi_finals,ENG,IND,Adelaide Oval,,10/11/22,1830
-45,final,,,MCG,,13/11/22,1900
+45,final,ENG,PAK,MCG,,13/11/22,1900

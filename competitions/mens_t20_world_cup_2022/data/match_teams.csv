@@ -87,5 +87,5 @@ id,match_number,team,runs,wickets,overs,result,dls_par_score,dls_overs
 86,43,PAK,153,3,19.1,win,,
 87,44,IND,168,6,20,lose,,
 88,44,ENG,170,0,16,win,,
-89,45,PAK,,,,,,
-90,45,ENG,,,,,,
+89,45,PAK,137,8,20,lose,,
+90,45,ENG,138,5,19,win,,
