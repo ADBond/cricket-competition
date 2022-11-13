@@ -27,6 +27,7 @@ England,no_result in match vs Australia in super_12,2
 England,win in match vs New Zealand in super_12,4
 England,win in match vs Sri Lanka in super_12,4
 England,win in match vs India in semi_finals,16
+England,win in match vs Pakistan in final,32
 England,fifer (Sam Curran vs Afghanistan),0.5
 England,to_knockouts (After defeating Sri Lanka),2
 England,"bowled_out_opponent (vs Afghanistan, in super_12)",0.3
@@ -99,9 +100,11 @@ Pakistan,win in match vs Netherlands in super_12,4
 Pakistan,win in match vs South Africa in super_12,4
 Pakistan,win in match vs Bangladesh in super_12,4
 Pakistan,win in match vs New Zealand in semi_finals,16
+Pakistan,lose in match vs England in final,0
 Pakistan,to_knockouts (After defeating Bangladesh),2
 Pakistan,"close_loss (vs India, in super_12)",0.2
 Pakistan,"close_loss (vs Zimbabwe, in super_12)",0.2
+Pakistan,"close_loss (vs England, in final)",0.2
 South Africa,no_result in match vs Zimbabwe in super_12,2
 South Africa,win in match vs Bangladesh in super_12,4
 South Africa,win in match vs India in super_12,4
