@@ -269,7 +269,8 @@ df_team_points <- df_full_points %>%
   # filter(result != "yet_to_play") %>%
   group_by(team, display_name) %>%
   summarise(
-    matches_played = length(unique(id)),
+    # TODO: this needs an outside table to get info
+    # matches_played = length(unique(id)),
     total_points = sum(points),
     .groups = "drop",
   ) %>%
